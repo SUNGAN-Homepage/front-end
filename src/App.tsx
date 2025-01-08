@@ -9,12 +9,19 @@ import { Footer } from './components/Footer.tsx';
 function App() {
   return (
     <>
+      {/*메뉴 부분*/}
       <Header />
+      {/*간략 소개*/}
       <Intro />
+      {/*기업 소개 */}
       <DetailIntro />
+      {/*파트너 회사들*/}
       <Partner />
+      {/*포트폴리오*/}
       <PortFolio />
+      {/*컨택*/}
       <Contact />
+      {/*하단 부분*/}
       <Footer />
     </>
   );
