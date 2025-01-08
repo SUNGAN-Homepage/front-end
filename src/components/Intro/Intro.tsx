@@ -1,3 +1,3 @@
 export const Intro = () => {
-  return <></>;
+  return <div>Intro</div>;
 };
