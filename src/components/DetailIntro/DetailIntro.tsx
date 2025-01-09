@@ -3,7 +3,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './DetailIntro.css';
-import companyImage1 from '../../assets/PHOTOFRAME.png';
+import image1 from '../../assets/image1.jpg'; // 첫 번째 이미지 경로
+import image2 from '../../assets/image2.jpeg'; // 두 번째 이미지 경로
 
 export const DetailIntro: React.FC = () => {
   const settings = {
@@ -12,45 +13,47 @@ export const DetailIntro: React.FC = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: true,
   };
 
-  return(
-    // 기업 소개 컴포넌트
+  return (
     <section className="detail-intro">
       <Slider {...settings}>
-      <div className="slide">
-      <div className="slide-content">
-          <div className="image-wrapper">
-              <img src= {companyImage1} alt="소개 이미지 1" />
+        {/* 슬라이드 1 */}
+          <div className="slide-content">
+            <div className="polaroid-wrapper">
+              <div className="polaroid ">
+                <img src={image1} alt="소개 이미지 1" />
+              </div>
+              <div className="polaroid rotated">
+                <img src={image2} alt="소개 이미지 2" />
+              </div>
             </div>
-            <h2>순간 스튜디오</h2>
-          <p>
-            안녕하세요 순간 스튜디오입니다.
-          </p>
-        </div>
-      </div>
-      <div className="slide">
-      <div className="slide-content">
-          <div className="image-wrapper">
-              <img src= {companyImage1} alt="소개 이미지 1" />
+            <div className="text-content">
+              <h2>순간, 스튜디오</h2>
+              <p>
+                저희 <strong>순간, 스튜디오</strong>는 고객에게 최고의 순간을 제공합니다.<br/>
+              </p>
             </div>
-            <h2>순간 스튜디오2</h2>
-          <p>
-            안녕하세요 순간 스튜디오입니다.
-          </p>
-        </div>
-      </div>
-      <div className="slide">
-      <div className="slide-content">
-          <div className="image-wrapper">
-              <img src= {companyImage1} alt="소개 이미지 1" />
+          </div>
+
+        {/* 슬라이드 2 */}
+          <div className="slide-content">
+            <div className="polaroid-wrapper">
+              <div className="polaroid">
+                <img src={image2} alt="소개 이미지 3" />
+              </div>
+              <div className="polaroid rotated">
+                <img src={image1} alt="소개 이미지 4" />
+              </div>
             </div>
-            <h2>순간 스튜디오3</h2>
-          <p>
-            안녕하세요 순간 스튜디오입니다.
-          </p>
-        </div>
-      </div>
+            <div className="text-content">
+              <h2>우리의 동아리</h2>
+              <p>
+                저희는 경상대학교 사진동아리입니다.
+              </p>
+            </div>
+          </div>
       </Slider>
     </section>
   );
