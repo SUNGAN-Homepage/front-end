@@ -3,12 +3,12 @@ import { Box, Button, Typography } from '@mui/material';
 export const Intro = () => {
   return (
     //추후 이미지로 대체
-    <Box sx={{ background: 'gray' }}>
+    <Box sx={{ background: 'gray' }} mt={'3.5rem'}>
       <Box
         sx={{
-          textAlign: 'center', // 텍스트 중앙 정렬
-          margin: '0 auto', // Box 자체를 부모 내에서 수평 중앙 정렬 (필요 시)
-          padding: 4, // 패딩 추가 (선택 사항)
+          textAlign: 'center',
+          margin: '0 auto',
+          padding: 4,
         }}
       >
         <Typography variant="h3" marginBottom={5} marginTop={5}>
@@ -24,7 +24,6 @@ export const Intro = () => {
             width: '150px',
             background: 'white',
             color: 'black',
-            // fontSize: '12px',
             marginBottom: 10,
           }}
         >
