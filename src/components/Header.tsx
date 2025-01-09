@@ -14,16 +14,24 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   backgroundColor: 'white',
   color: 'black',
-  flexDirection: 'column', // 수직 정렬
-  justifyContent: 'flex-start', // 상단 정렬
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
 }));
 
 export default function Header() {
   const pages = ['HOME', 'INFO', 'PRODUCT', 'CONTACT'];
 
   return (
-    <Box>
-      <AppBar position="static">
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: 'white',
+          color: 'black',
+          boxShadow: 'none',
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
+      >
         <StyledToolbar>
           <Box
             sx={{
@@ -34,7 +42,7 @@ export default function Header() {
             }}
           >
             <Box sx={{ cursor: 'pointer', marginTop: '5px' }}>
-              <img src={LOGO} alt={'로고'} width={'180px'} />
+              <img src={LOGO} alt="로고" width="180px" />
             </Box>
             <IconButton sx={{ marginLeft: 'auto' }}>
               <InstagramIcon />
@@ -45,7 +53,7 @@ export default function Header() {
             sx={{
               display: 'flex',
               width: '100%',
-              justifyContent: 'space-between', // 버튼들이 가로로 균등하게 배치되도록 설정
+              justifyContent: 'space-between',
               mt: 1,
             }}
           >
@@ -57,6 +65,7 @@ export default function Header() {
           </Box>
         </StyledToolbar>
       </AppBar>
-    </Box>
+      <Toolbar />
+    </>
   );
 }
