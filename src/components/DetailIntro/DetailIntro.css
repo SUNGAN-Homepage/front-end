@@ -1,0 +1,35 @@
+.detail-intro {
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .image-wrapper {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: 200px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #666;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  
