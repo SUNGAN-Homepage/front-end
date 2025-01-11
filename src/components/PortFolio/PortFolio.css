@@ -106,9 +106,6 @@
     transform: scale(1.1); /* 이미지 약간 더 확대 */
   }
 
-  [aria-hidden="true"] {
-    pointer-events: none; /* 초점 방지 */
-  }
 
   /* 테블릿용 스타일 */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -146,24 +143,25 @@
     padding: 20px;
     border-radius: 8px;
     width: 300px;
-    text-align: center;
+    text-align: left;
     position: relative;
   }
   
   .modal-content img {
     width: 100%;
-    height: auto;
+    height: 80%;
     margin-top: 20px;
   }
   
   .modal-content h3 {
     color: white;
-    margin: 10px 0;
+    margin: 4px 0;
+    font-size: 0.9rem;
   }
   
   .modal-content p {
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   
   /* 닫기 버튼 */
@@ -176,8 +174,4 @@
     border: none;
     cursor: pointer;
     color: white;
-  }
-  
-  [aria-hidden="true"] {
-    pointer-events: none; /* 초점 방지 */
   }

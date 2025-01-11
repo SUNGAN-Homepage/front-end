@@ -70,7 +70,7 @@ export const PortFolio: React.FC = () => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     accessibility: false,
-    focusOnSelect: true,
+    // focusOnSelect: true,
   };
 
   const handleImageClick = (image: { src: string; title: string; date: string }) => {
