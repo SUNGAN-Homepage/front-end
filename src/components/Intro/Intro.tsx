@@ -3,18 +3,18 @@ import { Box, Button, Typography } from '@mui/material';
 export const Intro = () => {
   return (
     //추후 이미지로 대체
-    <Box sx={{ background: 'gray' }} mt={'3.5rem'}>
+    <Box sx={{ background: 'gray', mt: { xs: '3.5rem', sm: '0' } }}>
       <Box
         sx={{
-          textAlign: 'center',
-          margin: '0 auto',
+          textAlign: { xs: 'center', sm: 'start' },
+          marginLeft: { xs: 0, sm: 5 },
           padding: 4,
         }}
       >
-        <Typography variant="h3" marginBottom={5} marginTop={5}>
+        <Typography variant="h3" marginBottom={3} marginTop={10}>
           간략 소개
         </Typography>
-        <Typography variant="h4" marginBottom={5}>
+        <Typography variant="h4" marginBottom={10}>
           간단하게 기업에 대한 소개
         </Typography>
 
@@ -24,7 +24,7 @@ export const Intro = () => {
             width: '150px',
             background: 'white',
             color: 'black',
-            marginBottom: 10,
+            marginBottom: 5,
           }}
         >
           예약하기
