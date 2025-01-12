@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import { useMediaQuery } from '@mui/material';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Portfolio.css';
+import './PortFolio.css';
 
 import image1 from '../../assets/imageP_1.png';
 import image2 from '../../assets/imageP_2.jpg';
