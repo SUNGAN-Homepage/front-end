@@ -17,46 +17,43 @@ import image9 from '../../assets/imageP_9.jpg';
 import image10 from '../../assets/imageP_10.jpg';
 
 const imageData = [
-    { src: image1, title: '분홍빛 세상',      date: '2024-10-01' },
-    { src: image2, title: '바다같은 구름',    date: '2024-07-22' },
-    { src: image3, title: '은하단 중심',      date: '2023-12-10' },
-    { src: image4, title: '초록빛 들판',      date: '2024-08-01' },
-    { src: image5, title: '위대한 모험의 시작',date: '2024-06-30' },
-    { src: image6, title: '가을의 중심',      date: '2023-12-18' },
-    { src: image7, title: '미니어처 세상',    date: '2024-12-20' },
-    { src: image8, title: '도시의 거울',      date: '2024-12-22' },
-    { src: image9, title: '유럽 어딘가',      date: '2024-12-25' },
-    { src: image10, title: '숭례문',         date: '2024-09-25' },
+  { src: image1, title: '분홍빛 세상', date: '2024-10-01' },
+  { src: image2, title: '바다같은 구름', date: '2024-07-22' },
+  { src: image3, title: '은하단 중심', date: '2023-12-10' },
+  { src: image4, title: '초록빛 들판', date: '2024-08-01' },
+  { src: image5, title: '위대한 모험의 시작', date: '2024-06-30' },
+  { src: image6, title: '가을의 중심', date: '2023-12-18' },
+  { src: image7, title: '미니어처 세상', date: '2024-12-20' },
+  { src: image8, title: '도시의 거울', date: '2024-12-22' },
+  { src: image9, title: '유럽 어딘가', date: '2024-12-25' },
+  { src: image10, title: '숭례문', date: '2024-09-25' },
 ];
 
-const CustomPrevArrow = (props: any) => {
-  const { className, style, onClick } = props;
+const CustomPrevArrow = (props: React.ComponentProps<'div'>) => {
+  const { className, onClick } = props;
   return (
-    <div
-      className={`${className} custom-arrow prev-arrow`}
-      onClick={onClick}
-    >
+    <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
       &#10094; {/* 왼쪽 화살표 */}
     </div>
   );
 };
 
-const CustomNextArrow = (props: any) => {
-  const { className, style, onClick } = props;
+const CustomNextArrow = (props: React.ComponentProps<'div'>) => {
+  const { className, onClick } = props;
   return (
-    <div
-      className={`${className} custom-arrow next-arrow`}
-      onClick={onClick}
-    >
+    <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
       &#10095; {/* 오른쪽 화살표 */}
     </div>
   );
 };
 
-
 export const PortFolio: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState<{ src: string; title: string; date: string } | null>(null);
+  const [currentImage, setCurrentImage] = useState<{
+    src: string;
+    title: string;
+    date: string;
+  } | null>(null);
 
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1024px)');
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -73,7 +70,11 @@ export const PortFolio: React.FC = () => {
     // focusOnSelect: true,
   };
 
-  const handleImageClick = (image: { src: string; title: string; date: string }) => {
+  const handleImageClick = (image: {
+    src: string;
+    title: string;
+    date: string;
+  }) => {
     setCurrentImage(image);
     setIsOpen(true);
   };
@@ -88,7 +89,11 @@ export const PortFolio: React.FC = () => {
       <h2 className="portfolio-title">PORTFOLIO</h2>
       <Slider {...settings}>
         {imageData.map((image, index) => (
-          <div className="slide" key={index} onClick={() => handleImageClick(image)}>
+          <div
+            className="slide"
+            key={index}
+            onClick={() => handleImageClick(image)}
+          >
             <img src={image.src} alt={image.title} />
           </div>
         ))}
@@ -101,9 +106,15 @@ export const PortFolio: React.FC = () => {
             <button className="close-button" onClick={handleClose}>
               ×
             </button>
-            <img src={currentImage.src} alt={currentImage.title} className="modal-image" />
+            <img
+              src={currentImage.src}
+              alt={currentImage.title}
+              className="modal-image"
+            />
             <h3>{currentImage.title}</h3>
-            <p><strong>촬영 일:</strong> {currentImage.date}</p>
+            <p>
+              <strong>촬영 일:</strong> {currentImage.date}
+            </p>
           </div>
         </div>
       )}
