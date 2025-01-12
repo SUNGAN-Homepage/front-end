@@ -1,5 +1,5 @@
 .portfolio {
-    padding: 20px;
+    padding: 20px 80px;
     background-color: #ffffff;
     text-align: center;
   }
@@ -37,8 +37,39 @@
     box-shadow: 0 6px 0 0 black; /* 아래 두 번째 선 */
   }
   
+  /* 화살표 스타일 */
+  .custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px; /* 화살표 너비 */
+    height: 100px; /* 화살표 높이 (길이 설정) */
+    background-color: transparent; /* 배경색 제거 */
+    color: #ccc; /* 화살표 색상 */
+    font-size: 3rem; /* 화살표 크기 */
+    line-height: 100px; /* 세로 중앙 정렬 */
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
   
+  .prev-arrow {
+    left: -60px; /* 이전 화살표 위치 */
+  }
   
+  .next-arrow {
+    right: -60px; /* 다음 화살표 위치 */
+  }
+  
+  .custom-arrow:hover {
+    color: #333; /* hover 시 색상 변경 */
+  }
+  
+
+
   
   
   .slick-slider {
@@ -75,9 +106,6 @@
     transform: scale(1.1); /* 이미지 약간 더 확대 */
   }
 
-  [aria-hidden="true"] {
-    pointer-events: none; /* 초점 방지 */
-  }
 
   /* 테블릿용 스타일 */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -115,24 +143,25 @@
     padding: 20px;
     border-radius: 8px;
     width: 300px;
-    text-align: center;
+    text-align: left;
     position: relative;
   }
   
   .modal-content img {
     width: 100%;
-    height: auto;
+    height: 80%;
     margin-top: 20px;
   }
   
   .modal-content h3 {
     color: white;
-    margin: 10px 0;
+    margin: 4px 0;
+    font-size: 0.9rem;
   }
   
   .modal-content p {
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   
   /* 닫기 버튼 */
@@ -146,4 +175,3 @@
     cursor: pointer;
     color: white;
   }
-  

@@ -29,6 +29,31 @@ const imageData = [
     { src: image10, title: '숭례문',         date: '2024-09-25' },
 ];
 
+const CustomPrevArrow = (props: any) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} custom-arrow prev-arrow`}
+      onClick={onClick}
+    >
+      &#10094; {/* 왼쪽 화살표 */}
+    </div>
+  );
+};
+
+const CustomNextArrow = (props: any) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} custom-arrow next-arrow`}
+      onClick={onClick}
+    >
+      &#10095; {/* 오른쪽 화살표 */}
+    </div>
+  );
+};
+
+
 export const PortFolio: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState<{ src: string; title: string; date: string } | null>(null);
@@ -41,10 +66,11 @@ export const PortFolio: React.FC = () => {
     infinite: true,
     speed: 500,
     slidesToShow: isMobile ? 2 : isTablet ? 3 : 4,
-    slidesToScroll: isMobile ? 1 : isTablet ? 2 : 3,
-    arrows: true,
+    slidesToScroll: isMobile ? 2 : isTablet ? 3 : 4,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
     accessibility: false,
-    focusOnSelect: true,
+    // focusOnSelect: true,
   };
 
   const handleImageClick = (image: { src: string; title: string; date: string }) => {
