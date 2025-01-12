@@ -3,7 +3,7 @@ import ContactForm from './ContactForm';
 
 export const Contact = () => {
   return (
-    <Box sx={{ padding: 2 }}>
+    <Box sx={{ padding: 2, marginX: { xs: 0, sm: 20 } }}>
       <Box
         sx={{
           margin: '0 auto',
