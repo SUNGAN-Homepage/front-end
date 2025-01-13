@@ -15,6 +15,7 @@ import image7 from '../../assets/imageP_7.jpg';
 import image8 from '../../assets/imageP_8.jpg';
 import image9 from '../../assets/imageP_9.jpg';
 import image10 from '../../assets/imageP_10.jpg';
+import { Close } from '@mui/icons-material';
 
 const imageData = [
   { src: image1, title: '분홍빛 세상', date: '2024-10-01' },
@@ -105,7 +106,7 @@ export const PortFolio: React.FC = () => {
         <div className="modal" onClick={handleClose}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={handleClose}>
-              ×
+              <Close />
             </button>
             <img
               src={currentImage.src}

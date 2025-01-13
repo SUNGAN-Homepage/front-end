@@ -14,7 +14,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   backgroundColor: 'white',
   color: 'black',
-  borderBottom: '1px solid black',
+  borderBottom: '1px solid #c8c8c8',
   borderMargin: '2px',
   flexDirection: 'column', // 기본적으로 세로 배치
   justifyContent: 'flex-start',
@@ -36,7 +36,8 @@ export default function Header() {
           backgroundColor: 'white',
           color: 'black',
           boxShadow: 'none',
-          zIndex: (theme) => theme.zIndex.drawer + 1,
+          zIndex: 10,
+          // zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       >
         <StyledToolbar>

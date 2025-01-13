@@ -155,21 +155,31 @@
     align-items: center;
     z-index: 1000;
   }
-  
-  /* 모달 내용 */
+
+/* 기본 모달 스타일 */
+.modal-content {
+  background: black;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%; /* 기본값: 80% */
+  height: 80%;
+  text-align: left;
+  position: relative;
+}
+
+/* 데스크톱 화면에서 width를 70%로 설정 */
+@media (min-width: 1024px) {
   .modal-content {
-    background: black;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: left;
-    position: relative;
+    width: 60%; /* 데스크톱 화면에서 70%로 변경 */
   }
-  
+}
+
   .modal-content img {
     width: 100%;
     height: 80%;
     margin-top: 20px;
+    object-fit: contain; /* 비율을 유지하면서 크기를 조정 */
+    background:black;
   }
   
   .modal-content h3 {
