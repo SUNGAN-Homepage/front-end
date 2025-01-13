@@ -25,32 +25,34 @@ export const partnerData = [
 ];
 
 export const Partner: React.FC = () => {
-const settings = {
-  dots: true, // 하단 네비게이션 점
-  infinite: true, // 무한 반복
-  speed: 500, // 슬라이드 전환 속도
-  slidesToShow: 4, // 기본값: 한 줄에 4개씩
-  slidesToScroll: 4, // 한 번에 4개씩 스크롤
-  rows: 2, // 2줄
-  responsive: [
-    {
-      breakpoint: 1024, // 테블릿
-      settings: {
-        slidesToShow: 4, // 4열
-        slidesToScroll: 4, // 4개씩 스크롤
-        rows: 2, // 2줄
+  const settings = {
+    dots: true, // 하단 네비게이션 점
+    infinite: true, // 무한 반복
+    speed: 3000, // 슬라이드 전환 속도
+    slidesToShow: 4, // 기본값: 한 줄에 4개씩
+    rows: 2, // 2줄
+    autoplay: true,
+    autoplaySpeed: 3000,
+    cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 1024, // 테블릿
+        settings: {
+          slidesToShow: 4, // 4열
+          slidesToScroll: 1, // 4개씩 스크롤
+          rows: 2, // 2줄
+        },
       },
-    },
-    {
-      breakpoint: 768, // 모바일
-      settings: {
-        slidesToShow: 3, // 3열
-        slidesToScroll: 3, // 3개씩 스크롤
-        rows: 3, // 3줄
+      {
+        breakpoint: 768, // 모바일
+        settings: {
+          slidesToShow: 3, // 3열
+          slidesToScroll: 1, // 3개씩 스크롤
+          rows: 2, // 3줄
+        },
       },
-    },
-  ],
-};
+    ],
+  };
 
   return (
     <section className="partner">
