@@ -1,5 +1,5 @@
 .portfolio {
-    padding: 20px 80px;
+
     background-color: #ffffff;
     text-align: center;
   }
@@ -16,7 +16,14 @@
     margin-bottom: 40px; /* 아래쪽 간격 */
     display: inline-block; /* 텍스트 길이에 따라 너비 조정 */
   }
-  
+  .slick-arrow.slick-prev.custom-arrow.prev-arrow::before{
+    /*내장 왼쪽 버튼 스타일 숨기기*/
+    display:none;
+  }
+  .slick-arrow.slick-next.custom-arrow.next-arrow::before{
+    /*내장 오른쪽 버튼 스타일 숨기기*/
+    display:none;
+  }
   .portfolio-title::before,
   .portfolio-title::after {
     content: ""; /* 선 생성 */
@@ -67,16 +74,16 @@
   .custom-arrow:hover {
     color: #333; /* hover 시 색상 변경 */
   }
-  
 
-
-  
-  
   .slick-slider {
     margin: 0 auto;
     width: 100%; /* 슬라이더가 화면 너비를 차지 */
   }
 
+.slick-arrow{
+  /*arrow 때문에 모바일에서 움직임이 생김*/
+  margin-right:100px;
+}
   .slide {
     position: relative;
     padding-top: 160%; /* 4:5 비율 */
@@ -107,8 +114,21 @@
   }
 
 
+@media (max-width:767px){
+
+  .custom-arrow.prev-arrow{
+    margin-left:80px;
+  }
+  .custom-arrow.next-arrow{
+    margin-right:80px;
+  }
+}
+
   /* 테블릿용 스타일 */
 @media (min-width: 768px) and (max-width: 1024px) {
+  .portfolio {
+    padding: 20px 80px;
+  }
     .portfolio-title {
       font-size: 2rem; /* 테블릿에서 텍스트 크기 증가 */
       margin-bottom: 30px; /* 여백 조정 */
