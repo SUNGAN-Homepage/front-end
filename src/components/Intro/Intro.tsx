@@ -3,7 +3,12 @@ import { Box, Button, Typography } from '@mui/material';
 export const Intro = () => {
   return (
     //추후 이미지로 대체
-    <Box sx={{ background: 'gray', mt: { xs: '3.5rem', sm: '0' } }}>
+    <Box
+      sx={{
+        background: 'gray',
+        mt: { xs: '3.5rem', sm: '0' },
+      }}
+    >
       <Box
         sx={{
           textAlign: { xs: 'center', sm: 'start' },
