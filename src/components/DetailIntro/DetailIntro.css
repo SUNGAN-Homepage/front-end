@@ -4,7 +4,10 @@
     background-color: #f9f9f9;
     text-align: center;
   }
-  
+
+.slick-dots{
+  top:480px
+}
   /* 슬라이드 컨텐츠 스타일 */
   .slide-content {
     display: flex;
@@ -29,12 +32,13 @@
   /* 기본 폴라로이드 스타일 */
   .polaroid {
     position: absolute;
-    width: 100%;
+    width: 60%;
     aspect-ratio: 3 / 4;
     background: rgb(230, 230, 230);
     border: 10px solid white;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
     overflow: hidden;
+    z-index: 100;
   }
   
   .polaroid img {
@@ -44,16 +48,16 @@
   }
   
   /* 기울어진 폴라로이드 */
-  .polaroid.rotated {
+  .polaroid.rotated{
     transform: rotate(20deg);
     top: 15px;
     left: 100px;
-    z-index: -1;
+    z-index: 1000;
   }
   
   /* 텍스트 컨텐츠 스타일 */
   .text-content {
-    margin-top: 500px; 
+    margin-top: 320px;
     max-width: 100%;
     text-align: center; /* 모바일 기준 중앙 정렬 */
   }
@@ -80,6 +84,10 @@
   
     .polaroid-wrapper {
       max-width: 300px; /* 테블릿 이미지 크기 증가 */
+    }
+    .polaroid {
+      width: 100%;
+      height: auto;
     }
     .polaroid.rotated {
         transform: rotate(10deg);
