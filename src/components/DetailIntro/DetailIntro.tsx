@@ -17,7 +17,7 @@ export const DetailIntro: React.FC = () => {
   };
 
   return (
-    <section className="detail-intro">
+    <section className="detail-intro" style={{ overflow: 'hidden' }}>
       <Slider {...settings}>
         {/* 슬라이드 1 */}
         <div className="slide-content">
