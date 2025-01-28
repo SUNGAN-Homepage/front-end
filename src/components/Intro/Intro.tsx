@@ -6,7 +6,7 @@ export const Intro = () => {
     <Box
       sx={{
         background: 'gray',
-        mt: { xs: '3.5rem', sm: '0' },
+        mt: { xs: 5, sm: '0' },
       }}
     >
       <Box
@@ -30,6 +30,12 @@ export const Intro = () => {
             background: 'white',
             color: 'black',
             marginBottom: 5,
+
+            transition: 'transform 0.3s ease', // 애니메이션 효과 추가
+            '&:hover': {
+              transform: 'scale(1.1)', // 호버 시 크기 확대
+              background: '#f5f5f5', // 호버 시 배경색 변경
+            },
           }}
         >
           예약하기

@@ -32,24 +32,25 @@
     background-color: black; /* 선 색상 */
     left: -10%; /* 중앙 정렬을 위해 위치 조정 */
   }
-  
+
   .portfolio-title::before {
     top: -10px; /* 텍스트 위 첫 번째 선 위치 */
     box-shadow: 0 -6px 0 0 black; /* 위 두 번째 선 */
   }
-  
+
   .portfolio-title::after {
     bottom: -10px; /* 텍스트 아래 첫 번째 선 위치 */
     box-shadow: 0 6px 0 0 black; /* 아래 두 번째 선 */
   }
-  
+
   /* 화살표 스타일 */
   .custom-arrow {
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/
     transform: translateY(-50%);
-    width: 10px; /* 화살표 너비 */
-    height: 100px; /* 화살표 높이 (길이 설정) */
+    width: 30px; /* 화살표 너비 */
+
+    /*height: 100px; !* 화살표 높이 (길이 설정) *!*/
     background-color: transparent; /* 배경색 제거 */
     color: #ccc; /* 화살표 색상 */
     font-size: 3rem; /* 화살표 크기 */
@@ -60,18 +61,19 @@
     align-items: center;
     justify-content: center;
     transition: color 0.3s ease;
+    height: 100%;
+    /*background-color:black;*/
   }
-  
-  .prev-arrow {
-    left: -60px; /* 이전 화살표 위치 */
-  }
-  
-  .next-arrow {
-    right: -60px; /* 다음 화살표 위치 */
-  }
-  
+.custom-arrow.next-arrow{
+  padding-right: 2%;
+}
+.custom-arrow.prev-arrow{
+padding-left:2%;
+}
+
   .custom-arrow:hover {
     color: #333; /* hover 시 색상 변경 */
+
   }
 
   .slick-slider {
@@ -81,7 +83,7 @@
 
 .slick-arrow{
   /*arrow 때문에 모바일에서 움직임이 생김*/
-  margin-right:100px;
+  /*margin-right:100px;*/
 }
   .slide {
     position: relative;
@@ -90,7 +92,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0.5; /* 기본적으로 어둡게 설정 */
   }
-  
+
   .slide img {
     position: absolute;
     top: 0;
@@ -107,7 +109,7 @@
     transform: scale(1.02); /* 슬라이드 전체 확대 */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   }
-  
+
   .slide:hover img {
     transform: scale(1.1); /* 이미지 약간 더 확대 */
   }
@@ -115,25 +117,31 @@
 
 @media (max-width:767px){
 
-  .custom-arrow.prev-arrow{
-    margin-left:80px;
+  .prev-arrow{
+  left: 2%;
   }
-  .custom-arrow.next-arrow{
-    margin-right:80px;
+  .next-arrow {
+  right:2%;
   }
 }
 
   /* 테블릿용 스타일 */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .portfolio {
-    padding: 20px 80px;
-  }
+  /*.portfolio {*/
+  /*  padding: 20px 80px;*/
+  /*}*/
     .portfolio-title {
       font-size: 2rem; /* 테블릿에서 텍스트 크기 증가 */
       margin-bottom: 30px; /* 여백 조정 */
     }
+  .prev-arrow{
+    left: 1%;
   }
-  
+  .next-arrow {
+    right:1%;
+  }
+  }
+
   /* 데스크톱용 스타일 */
   @media (min-width: 1025px) {
     .portfolio-title {
@@ -181,18 +189,18 @@
     object-fit: contain; /* 비율을 유지하면서 크기를 조정 */
     background:black;
   }
-  
+
   .modal-content h3 {
     color: white;
     margin: 4px 0;
     font-size: 0.9rem;
   }
-  
+
   .modal-content p {
     color: white;
     font-size: 0.7rem;
   }
-  
+
   /* 닫기 버튼 */
   .close-button {
     position: absolute;
