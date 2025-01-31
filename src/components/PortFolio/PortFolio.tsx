@@ -33,7 +33,11 @@ const imageData = [
 const CustomPrevArrow = (props: React.ComponentProps<'div'>) => {
   const { className, onClick } = props;
   return (
-    <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
+    <div
+      className={`${className} custom-arrow prev-arrow`}
+      onClick={onClick}
+      id={'PORTFOLIO'}
+    >
       &#10094; {/* 왼쪽 화살표 */}
     </div>
   );

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './DetailIntro.css';
 import image1 from '../../assets/image1.jpg'; // 첫 번째 이미지 경로
 import image2 from '../../assets/image2.jpeg';
 import Slider from 'react-slick'; // 두 번째 이미지 경로
+import { Box } from '@mui/material';
 
 export const DetailIntro: React.FC = () => {
   const settings = {
@@ -14,10 +15,25 @@ export const DetailIntro: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
+    appendDots: (dots: ReactNode) => (
+      <Box
+        sx={{
+          borderRadius: '10px',
+          marginLeft: { xs: '-20px', sm: 'none' },
+          marginTop: '30px',
+        }}
+      >
+        <ul style={{ margin: '0px' }}> {dots} </ul>
+      </Box>
+    ),
   };
 
   return (
-    <section className="detail-intro">
+    <section
+      className="detail-intro"
+      style={{ overflow: 'hidden' }}
+      id={'INFO'}
+    >
       <Slider {...settings}>
         {/* 슬라이드 1 */}
         <div className="slide-content">
