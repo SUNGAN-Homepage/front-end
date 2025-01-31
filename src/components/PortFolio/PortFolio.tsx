@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Slider from 'react-slick';
-import { useMediaQuery } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './PortFolio.css';
@@ -15,7 +15,7 @@ import image7 from '../../assets/imageP_7.jpg';
 import image8 from '../../assets/imageP_8.jpg';
 import image9 from '../../assets/imageP_9.jpg';
 import image10 from '../../assets/imageP_10.jpg';
-import { Close } from '@mui/icons-material';
+import PortFolioModal from './PortFolioModal';
 
 const imageData = [
   { src: image1, title: '분홍빛 세상', date: '2024-10-01' },
@@ -61,19 +61,29 @@ export const PortFolio: React.FC = () => {
   } | null>(null);
 
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1024px)');
-  const isMobile = useMediaQuery('(max-width: 767px)');
-
+  const isMobile = useMediaQuery('(min-width: 385px) and (max-width: 767px)');
+  const isSmallMobile = useMediaQuery('(max-width: 384px)');
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     centerMode: true,
-    slidesToShow: isMobile ? 1 : isTablet ? 3 : 4,
-    slidesToScroll: isMobile ? 1 : isTablet ? 3 : 4,
+    slidesToShow: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
+    slidesToScroll: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     accessibility: false,
     // focusOnSelect: true,
+    appendDots: (dots: ReactNode) => (
+      <Box
+        sx={{
+          marginTop: isSmallMobile ? -8 : 1,
+          marginLeft: '-20px',
+        }}
+      >
+        <ul style={{ margin: '0px' }}> {dots} </ul>
+      </Box>
+    ),
   };
 
   const handleImageClick = (image: {
@@ -106,24 +116,11 @@ export const PortFolio: React.FC = () => {
       </Slider>
 
       {/* 모달 */}
-      {isOpen && currentImage && (
-        <div className="modal" onClick={handleClose}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={handleClose}>
-              <Close />
-            </button>
-            <img
-              src={currentImage.src}
-              alt={currentImage.title}
-              className="modal-image"
-            />
-            <h3>{currentImage.title}</h3>
-            <p>
-              <strong>촬영 일:</strong> {currentImage.date}
-            </p>
-          </div>
-        </div>
-      )}
+      <PortFolioModal
+        isOpen={isOpen}
+        currentImage={currentImage}
+        handleClose={handleClose}
+      />
     </section>
   );
 };

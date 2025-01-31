@@ -90,9 +90,10 @@ padding-left:2%;
     padding-top: 160%; /* 4:5 비율 */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0.5; /* 기본적으로 어둡게 설정 */
   }
-
+.portfolio .slick-slide{
+  opacity: 0.5; /* 기본적으로 어둡게 설정 */
+}
   .slide img {
     position: absolute;
     top: 0;
@@ -114,9 +115,10 @@ padding-left:2%;
     transform: scale(1.1); /* 이미지 약간 더 확대 */
   }
 
-
 @media (max-width:767px){
-
+  .slick-slide.slick-active.slick-center.slick-current{
+    opacity:1;
+  }
   .prev-arrow{
   left: 2%;
   }
