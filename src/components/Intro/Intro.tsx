@@ -4,6 +4,7 @@ export const Intro = () => {
   return (
     //추후 이미지로 대체
     <Box
+      id="HOME"
       sx={{
         background: 'gray',
         mt: { xs: 5, sm: '0' },

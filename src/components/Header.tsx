@@ -29,7 +29,16 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const pages = ['HOME', 'INFO', 'PRODUCT', 'CONTACT'];
+  const pages = ['HOME', 'INFO', 'PORTFOLIO', 'CONTACT'];
+  const scrollToSection = (id: string): void => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth', // 부드러운 스크롤
+        block: 'center', // 화면 중앙에 섹션 위치
+      });
+    }
+  };
   const [selectedMenu, setSelectedMenu] = useState<string | null>(null);
 
   return (
@@ -88,7 +97,7 @@ export default function Header() {
             sx={{
               display: 'flex',
               gridTemplateColumns: 'repeat(auto-fit, minmax(50px, 1fr))', // 메뉴 가로 배치
-              gap: { xs: 2, sm: 2 }, // 메뉴 간 간격
+              gap: { xs: 2, sm: 3 }, // 메뉴 간 간격
               width: '100%',
               mt: 1,
             }}
@@ -104,13 +113,13 @@ export default function Header() {
                   justifyItems: 'center',
                   '&:hover .bigMenu': {
                     opacity: selectedMenu === page ? 1 : 0, // 기본 메뉴 숨김
-                    transform: 'translateY(0px) scale(1.3)', // 위로 올라오면서 확대
+                    transform: 'translateY(0px) scale(1.2)', // 위로 올라오면서 확대
                     transition: 'transform 0.3s ease, opacity 0.3s ease',
                     background: 'none',
                   },
                   '&:hover .upMenu': {
                     opacity: selectedMenu === page ? 0 : 1, // 호버 시 올라오는 텍스트 표시
-                    transform: 'translateY(0px) scale(1.3)', // 위로 올라오면서 확대
+                    transform: 'translateY(0px) scale(1.2)', // 위로 올라오면서 확대
 
                     transition: 'transform 0.4s ease, opacity 0.4s ease',
                     background: 'none',
@@ -124,7 +133,7 @@ export default function Header() {
                     color: 'black',
                     fontFamily: 'Nanum Myeongjo',
                     fontWeight: selectedMenu === page ? '700' : '400',
-                    fontSize: selectedMenu === page ? '1.3rem' : '1.1rem',
+                    fontSize: selectedMenu === page ? '1.2rem' : '1rem',
                     gridColumn: '1 / 2', // 첫 번째 열
                     opacity: 1, // 초기 상태에서 표시
                     transform: 'translateY(0px)', // 초기 위치
@@ -142,8 +151,7 @@ export default function Header() {
                     color: 'black',
                     fontFamily: 'Nanum Myeongjo',
                     fontWeight: selectedMenu === page ? '700' : '400',
-                    fontSize: '1.1rem',
-
+                    fontSize: { xs: '1rem', sm: '1.1rem' },
                     gridColumn: '1 / 2', // 같은 열
                     opacity: 0, // 초기 상태에서 숨김
                     transform: 'translateY(20px)', // 초기 위치 (아래쪽으로 이동)
@@ -153,6 +161,7 @@ export default function Header() {
                   onClick={() => {
                     console.log(page);
                     setSelectedMenu(page);
+                    scrollToSection(page);
                   }}
                 >
                   {page}

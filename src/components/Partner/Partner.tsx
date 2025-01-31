@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -12,6 +12,7 @@ import logo5 from '../../assets/logo5.png';
 import logo6 from '../../assets/logo6.png';
 import logo7 from '../../assets/logo7.png';
 import logo8 from '../../assets/logo8.png';
+import { Box } from '@mui/material';
 
 export const partnerData = [
   { id: 1, name: '파트너 1', logo: logo1 },
@@ -28,11 +29,11 @@ export const Partner: React.FC = () => {
   const settings = {
     dots: true, // 하단 네비게이션 점
     infinite: true, // 무한 반복
-    speed: 3000, // 슬라이드 전환 속도
+    speed: 2000, // 슬라이드 전환 속도
     slidesToShow: 4, // 기본값: 한 줄에 4개씩
     rows: 2, // 2줄
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     cssEase: 'linear',
     responsive: [
       {
@@ -52,6 +53,17 @@ export const Partner: React.FC = () => {
         },
       },
     ],
+    appendDots: (dots: ReactNode) => (
+      <Box
+        sx={{
+          borderRadius: '10px',
+          marginTop: { xs: -35, sm: '40px' },
+          marginLeft: '-20px',
+        }}
+      >
+        <ul style={{ margin: '0px' }}> {dots} </ul>
+      </Box>
+    ),
   };
 
   return (
