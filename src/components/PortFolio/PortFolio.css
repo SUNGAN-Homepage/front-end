@@ -105,8 +105,10 @@ padding-left:2%;
     transition: transform 0.2s ease; /* 이미지 확대 전환 효과 */
   }
   /* Hover 애니메이션 */
+.portfolio .slick-slide:hover{
+  opacity:1;
+}
   .slide:hover {
-    opacity: 1; /* 완전 밝게 */
     transform: scale(1.02); /* 슬라이드 전체 확대 */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   }
