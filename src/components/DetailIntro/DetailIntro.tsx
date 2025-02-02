@@ -32,7 +32,7 @@ export const DetailIntro: React.FC = () => {
     <section
       className="detail-intro"
       style={{ overflow: 'hidden' }}
-      id={'INFO'}
+      id={'info'}
     >
       <Slider {...settings}>
         {/* 슬라이드 1 */}

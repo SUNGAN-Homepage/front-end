@@ -67,7 +67,7 @@ export const Partner: React.FC = () => {
   };
 
   return (
-    <section className="partner">
+    <section className="partner" id={'partner'}>
       <h2 className="partner-title">PARTNER</h2>
       <Slider {...settings}>
         {partnerData.map((partner) => (
