@@ -64,11 +64,14 @@
     height: 100%;
     /*background-color:black;*/
   }
+
 .custom-arrow.next-arrow{
-  padding-right: 2%;
+  /*padding-right: 2%;*/
+  margin-right:-8%;
 }
 .custom-arrow.prev-arrow{
-padding-left:2%;
+/*padding-left:2%;*/
+  margin-left:-8%;
 }
 
   .custom-arrow:hover {
@@ -80,6 +83,9 @@ padding-left:2%;
     margin: 0 auto;
     width: 100%; /* 슬라이더가 화면 너비를 차지 */
   }
+.slick-slider.slick-initialized{
+  width:85%;
+}
 
 .slick-arrow{
   /*arrow 때문에 모바일에서 움직임이 생김*/
@@ -91,7 +97,7 @@ padding-left:2%;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-.portfolio .slick-slide{
+.portfolio .slick-slide {
   opacity: 0.5; /* 기본적으로 어둡게 설정 */
 }
   .slide img {
@@ -104,6 +110,7 @@ padding-left:2%;
     object-fit: cover; /* 이미지 비율 유지 및 슬라이더 채우기 */
     transition: transform 0.2s ease; /* 이미지 확대 전환 효과 */
   }
+
   /* Hover 애니메이션 */
 .portfolio .slick-slide:hover{
   opacity:1;
@@ -117,8 +124,10 @@ padding-left:2%;
     transform: scale(1.1); /* 이미지 약간 더 확대 */
   }
 
+
+
 @media (max-width:767px){
-  .slick-slide.slick-active.slick-center.slick-current{
+  .slick-slide.slick-active.slick-current{
     opacity:1;
   }
   .prev-arrow{
@@ -134,6 +143,7 @@ padding-left:2%;
   /*.portfolio {*/
   /*  padding: 20px 80px;*/
   /*}*/
+
     .portfolio-title {
       font-size: 2rem; /* 테블릿에서 텍스트 크기 증가 */
       margin-bottom: 30px; /* 여백 조정 */
@@ -148,6 +158,15 @@ padding-left:2%;
 
   /* 데스크톱용 스타일 */
   @media (min-width: 1025px) {
+    .custom-arrow.next-arrow{
+      /*padding-right: 2%;*/
+      margin-right:-3%;
+    }
+    .custom-arrow.prev-arrow{
+      /*padding-left:2%;*/
+      margin-left:-3%;
+    }
+
     .portfolio-title {
       font-size: 2.5rem; /* 데스크톱에서 더 큰 텍스트 크기 */
       margin-bottom: 40px; /* 더 넓은 여백 */
