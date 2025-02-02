@@ -83,7 +83,7 @@
     margin: 0 auto;
     width: 100%; /* 슬라이더가 화면 너비를 차지 */
   }
-.slick-slider.slick-initialized{
+.portfolio .slick-slider.slick-initialized{
   width:85%;
 }
 
