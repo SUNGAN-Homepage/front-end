@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import IconButton from '@mui/material/IconButton';
 import LOGO from '../assets/LOGO.jpg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -30,8 +30,10 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function Header() {
   const pages = ['HOME', 'INFO', 'PORTFOLIO', 'CONTACT'];
+  const [selectedMenu, setSelectedMenu] = useState<string | null>('HOME');
+  //클릭시 이동
   const scrollToSection = (id: string): void => {
-    const element = document.getElementById(id);
+    const element = document.getElementById(id.toLowerCase());
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth', // 부드러운 스크롤
@@ -39,7 +41,36 @@ export default function Header() {
       });
     }
   };
-  const [selectedMenu, setSelectedMenu] = useState<string | null>(null);
+
+  //화면에 보이는 내용에 따라 메뉴 선택표시가 변경됨
+  useEffect(() => {
+    const handleScroll = () => {
+      // 현재 스크롤 위치를 가져오고, 화면의 1/3 정도 아래를 기준으로 함
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      let newActiveSection = selectedMenu; // 기본적으로 이전 값을 유지
+      [...pages, 'PARTNER'].forEach((page) => {
+        const element = document.getElementById(page.toLowerCase());
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          // 현재 스크롤 위치가 해당 섹션의 범위 내에 있을 경우
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            newActiveSection = page;
+          }
+        }
+      });
+      //파트너일 경우도 INFO로 연결
+      if (newActiveSection === 'PARTNER') {
+        newActiveSection = 'INFO';
+      }
+      setSelectedMenu(newActiveSection); // 활성 섹션 업데이트
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedMenu]);
 
   return (
     <>
@@ -159,7 +190,6 @@ export default function Header() {
                     position: 'absolute', // 같은 셀 안에서 겹침
                   }}
                   onClick={() => {
-                    console.log(page);
                     setSelectedMenu(page);
                     scrollToSection(page);
                   }}

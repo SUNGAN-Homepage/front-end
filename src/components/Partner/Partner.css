@@ -3,7 +3,9 @@
     background-color: #ffffff;
     text-align: center;
   }
-
+  .partner  .slick-slider.slick-initialized{
+    width:100%;
+  }
   .partner-title {
     font-family: 'Georgia', serif; /* 고급스러운 폰트 */
     font-size: 1.0rem; /* 제목 크기 */
@@ -118,5 +120,10 @@
     .partner-grid {
       grid-template-columns: repeat(8, 1fr); /* 데스크톱: 8열 */
     }
+    .partner  .slick-slider.slick-initialized{
+      width:80%;
+    }
+
+
   }
   

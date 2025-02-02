@@ -99,7 +99,7 @@ export const PortFolio: React.FC = () => {
   };
 
   return (
-    <section className="portfolio">
+    <section className="portfolio" id={'portfolio'}>
       <h2 className="portfolio-title">PORTFOLIO</h2>
       <Slider {...settings}>
         {imageData.map((image, index) => (
