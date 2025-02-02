@@ -67,17 +67,15 @@ export const PortFolio: React.FC = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    centerMode: true,
+    centerMode: !(isMobile || isSmallMobile),
     slidesToShow: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
     slidesToScroll: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     accessibility: false,
-    // focusOnSelect: true,
     appendDots: (dots: ReactNode) => (
       <Box
         sx={{
-          marginTop: isSmallMobile ? -8 : 1,
           marginLeft: '-20px',
         }}
       >
