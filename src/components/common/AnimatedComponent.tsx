@@ -3,10 +3,12 @@ import './AnimatedComponent.css'; // CSS 파일 추가
 
 interface AnimatedComponentProps {
   children: React.ReactNode;
+  id: string;
 }
 
 export const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   children,
+  id,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -14,9 +16,13 @@ export const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting); // 보이면 true, 사라지면 false
+        if (entry.isIntersecting) {
+          setIsVisible(true); // 화면에 나타나면 true
+        } else {
+          setIsVisible(false); // 화면에서 사라지면 false
+        }
       },
-      { threshold: 0.1 },
+      { threshold: 0.3 }, // 너무 자주 실행되지 않도록 임계값을 조정
     );
 
     if (ref.current) {
@@ -29,7 +35,7 @@ export const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   }, []);
 
   return (
-    <div ref={ref} className={`fade-up ${isVisible ? 'visible' : ''}`}>
+    <div id={id} ref={ref} className={`fade-up ${isVisible ? 'visible' : ''}`}>
       {children}
     </div>
   );

@@ -4,9 +4,9 @@ import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
 export const Contact = () => {
   return (
-    <AnimatedComponent>
-      <section className="Contact" id={'contact'}>
-        <Box id={'CONTACT'} sx={{ padding: 2, marginX: { xs: 0, sm: 20 } }}>
+    <AnimatedComponent id={'contact'}>
+      <section className="Contact">
+        <Box sx={{ padding: 2, marginX: { xs: 0, sm: 20 } }}>
           <Box
             sx={{
               margin: '0 auto',

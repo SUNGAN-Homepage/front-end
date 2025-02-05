@@ -4,9 +4,8 @@ import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 export const Intro = () => {
   return (
     //추후 이미지로 대체
-    <AnimatedComponent>
+    <AnimatedComponent id="home">
       <Box
-        id="home"
         sx={{
           background: 'gray',
           mt: { xs: 5, sm: '0' },

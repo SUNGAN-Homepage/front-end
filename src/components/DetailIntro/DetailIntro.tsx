@@ -30,12 +30,8 @@ export const DetailIntro: React.FC = () => {
   };
 
   return (
-    <AnimatedComponent>
-      <section
-        className="detail-intro"
-        style={{ overflow: 'hidden' }}
-        id={'info'}
-      >
+    <AnimatedComponent id={'info'}>
+      <section className="detail-intro" style={{ overflow: 'hidden' }}>
         <Slider {...settings}>
           {/* 슬라이드 1 */}
           <div className="slide-content">

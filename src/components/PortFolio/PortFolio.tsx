@@ -100,8 +100,8 @@ export const PortFolio: React.FC = () => {
   };
 
   return (
-    <AnimatedComponent>
-      <section className="portfolio" id={'portfolio'}>
+    <AnimatedComponent id={'portfolio'}>
+      <section className="portfolio">
         <h2 className="portfolio-title">PORTFOLIO</h2>
         <Slider {...settings}>
           {imageData.map((image, index) => (
