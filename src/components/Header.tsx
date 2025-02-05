@@ -32,6 +32,7 @@ export default function Header() {
   const pages = ['HOME', 'INFO', 'PORTFOLIO', 'CONTACT'];
   const [selectedMenu, setSelectedMenu] = useState<string | null>('HOME');
   //클릭시 이동
+  console.log(selectedMenu);
   const scrollToSection = (id: string): void => {
     const element = document.getElementById(id.toLowerCase());
     if (element) {
