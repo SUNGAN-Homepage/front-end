@@ -16,6 +16,7 @@ import image8 from '../../assets/imageP_8.jpg';
 import image9 from '../../assets/imageP_9.jpg';
 import image10 from '../../assets/imageP_10.jpg';
 import PortFolioModal from './PortFolioModal';
+import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
 const imageData = [
   { src: image1, title: '분홍빛 세상', date: '2024-10-01' },
@@ -99,26 +100,28 @@ export const PortFolio: React.FC = () => {
   };
 
   return (
-    <section className="portfolio" id={'portfolio'}>
-      <h2 className="portfolio-title">PORTFOLIO</h2>
-      <Slider {...settings}>
-        {imageData.map((image, index) => (
-          <div
-            className="slide"
-            key={index}
-            onClick={() => handleImageClick(image)}
-          >
-            <img src={image.src} alt={image.title} />
-          </div>
-        ))}
-      </Slider>
+    <AnimatedComponent id={'portfolio'}>
+      <section className="portfolio">
+        <h2 className="portfolio-title">PORTFOLIO</h2>
+        <Slider {...settings}>
+          {imageData.map((image, index) => (
+            <div
+              className="slide"
+              key={index}
+              onClick={() => handleImageClick(image)}
+            >
+              <img src={image.src} alt={image.title} />
+            </div>
+          ))}
+        </Slider>
 
-      {/* 모달 */}
-      <PortFolioModal
-        isOpen={isOpen}
-        currentImage={currentImage}
-        handleClose={handleClose}
-      />
-    </section>
+        {/* 모달 */}
+        <PortFolioModal
+          isOpen={isOpen}
+          currentImage={currentImage}
+          handleClose={handleClose}
+        />
+      </section>
+    </AnimatedComponent>
   );
 };

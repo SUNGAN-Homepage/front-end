@@ -13,6 +13,7 @@ import logo6 from '../../assets/logo6.png';
 import logo7 from '../../assets/logo7.png';
 import logo8 from '../../assets/logo8.png';
 import { Box } from '@mui/material';
+import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
 export const partnerData = [
   { id: 1, name: '파트너 1', logo: logo1 },
@@ -67,15 +68,17 @@ export const Partner: React.FC = () => {
   };
 
   return (
-    <section className="partner" id={'partner'}>
-      <h2 className="partner-title">PARTNER</h2>
-      <Slider {...settings}>
-        {partnerData.map((partner) => (
-          <div className="partner-item" key={partner.id}>
-            <img src={partner.logo} alt={partner.name} />
-          </div>
-        ))}
-      </Slider>
-    </section>
+    <AnimatedComponent id={'partner'}>
+      <section className="partner">
+        <h2 className="partner-title">PARTNER</h2>
+        <Slider {...settings}>
+          {partnerData.map((partner) => (
+            <div className="partner-item" key={partner.id}>
+              <img src={partner.logo} alt={partner.name} />
+            </div>
+          ))}
+        </Slider>
+      </section>
+    </AnimatedComponent>
   );
 };
