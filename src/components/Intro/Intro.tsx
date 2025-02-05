@@ -38,6 +38,13 @@ export const Intro = () => {
               background: '#f5f5f5', // 호버 시 배경색 변경
             },
           }}
+          onClick={() =>
+            window.open(
+              'https://booking.naver.com/booking/6/bizes/665865/items/4352330?startDate=2025-02-05',
+              '_blank',
+              'noopener,noreferrer',
+            )
+          }
         >
           예약하기
         </Button>
