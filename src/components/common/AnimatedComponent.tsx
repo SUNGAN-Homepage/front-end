@@ -35,7 +35,7 @@ export const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   }, []);
 
   return (
-    <div id={id} ref={ref} className={`fade-up ${isVisible ? 'visible' : ''}`}>
+    <div ref={ref} id={id} className={`fade-up ${isVisible ? 'visible' : ''}`}>
       {children}
     </div>
   );

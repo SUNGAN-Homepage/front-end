@@ -32,13 +32,25 @@ export default function Header() {
   const pages = ['HOME', 'INFO', 'PORTFOLIO', 'CONTACT'];
   const [selectedMenu, setSelectedMenu] = useState<string | null>('HOME');
   //클릭시 이동
-  console.log(selectedMenu);
   const scrollToSection = (id: string): void => {
     const element = document.getElementById(id.toLowerCase());
+    const appBar = document.querySelector('.appbar'); // Appbar의 클래스를 가져옴
+
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth', // 부드러운 스크롤
-        block: 'center', // 화면 중앙에 섹션 위치
+      const appBarHeight = appBar ? appBar.getBoundingClientRect().height : 0; // Appbar 높이 가져오기
+      const viewportHeight = window.innerHeight; // 현재 뷰포트 높이
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY; // 요소의 전체 위치
+      const adjustedPosition =
+        elementPosition -
+        viewportHeight / 2 +
+        element.clientHeight / 2 -
+        appBarHeight;
+      // 화면 중앙 정렬 후 Appbar 보정
+
+      window.scrollTo({
+        top: adjustedPosition,
+        behavior: 'smooth', // 부드러운 스크롤 적용
       });
     }
   };
@@ -47,7 +59,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       // 현재 스크롤 위치를 가져오고, 화면의 1/3 정도 아래를 기준으로 함
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       let newActiveSection = selectedMenu; // 기본적으로 이전 값을 유지
       [...pages, 'PARTNER'].forEach((page) => {
@@ -76,6 +88,7 @@ export default function Header() {
   return (
     <>
       <AppBar
+        className="appbar"
         position="fixed"
         sx={{
           backgroundColor: 'white',
@@ -165,7 +178,7 @@ export default function Header() {
                     color: 'black',
                     fontFamily: 'Nanum Myeongjo',
                     fontWeight: selectedMenu === page ? '700' : '400',
-                    fontSize: selectedMenu === page ? '1.2rem' : '1rem',
+                    fontSize: selectedMenu === page ? '1.1rem' : '1rem',
                     gridColumn: '1 / 2', // 첫 번째 열
                     opacity: 1, // 초기 상태에서 표시
                     transform: 'translateY(0px)', // 초기 위치

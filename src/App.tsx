@@ -15,7 +15,6 @@ function App() {
       {/*간략 소개*/}
       <Box sx={{ maxWidth: '1280px', margin: '0 auto' }}>
         <Intro />
-
         <Divider
           sx={{
             borderColor: 'gray',
@@ -56,14 +55,6 @@ function App() {
         />
         {/*컨택*/}
         <Contact />
-        <Divider
-          sx={{
-            borderColor: 'gray',
-            borderWidth: '0.1px',
-            marginY: '50px', // 위쪽 마진 4px, 아래쪽 마진 12px, 좌우 마진 auto
-            marginX: '20px',
-          }}
-        />
       </Box>
       {/*하단 부분*/}
       <Footer />
