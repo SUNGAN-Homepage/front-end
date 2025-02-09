@@ -100,28 +100,29 @@ export const PortFolio: React.FC = () => {
   };
 
   return (
-    <AnimatedComponent id={'portfolio'}>
-      <section className="portfolio">
-        <h2 className="portfolio-title">PORTFOLIO</h2>
-        <Slider {...settings}>
-          {imageData.map((image, index) => (
-            <div
-              className="slide"
-              key={index}
-              onClick={() => handleImageClick(image)}
-            >
-              <img src={image.src} alt={image.title} />
-            </div>
-          ))}
-        </Slider>
-
-        {/* 모달 */}
-        <PortFolioModal
-          isOpen={isOpen}
-          currentImage={currentImage}
-          handleClose={handleClose}
-        />
-      </section>
-    </AnimatedComponent>
+    <>
+      <AnimatedComponent id={'portfolio'}>
+        <section className="portfolio">
+          <h2 className="portfolio-title">PORTFOLIO</h2>
+          <Slider {...settings}>
+            {imageData.map((image, index) => (
+              <div
+                className="slide"
+                key={index}
+                onClick={() => handleImageClick(image)}
+              >
+                <img src={image.src} alt={image.title} />
+              </div>
+            ))}
+          </Slider>
+        </section>
+      </AnimatedComponent>
+      {/* 모달 */}
+      <PortFolioModal
+        isOpen={isOpen}
+        currentImage={currentImage}
+        handleClose={handleClose}
+      />
+    </>
   );
 };

@@ -6,7 +6,7 @@ export const Contact = () => {
   return (
     <AnimatedComponent id={'contact'}>
       <section className="Contact">
-        <Box sx={{ padding: 2, marginX: { xs: 0, sm: 20 } }}>
+        <Box sx={{ marginX: { xs: 2, sm: 20 } }}>
           <Box
             sx={{
               margin: '0 auto',

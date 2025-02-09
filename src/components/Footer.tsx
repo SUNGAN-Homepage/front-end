@@ -7,6 +7,8 @@ export const Footer = () => {
         height: { sm: '100px' },
         backgroundColor: '#303030',
         textAlign: 'center',
+        marginTop: '20px',
+
         paddingTop: 1,
         paddingBottom: 1,
         display: 'flex',
