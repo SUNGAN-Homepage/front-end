@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import IconButton from '@mui/material/IconButton';
 import LOGO from '../assets/LOGO.jpg';
+import { useEffect, useState } from 'react';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -14,29 +15,86 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   backgroundColor: 'white',
   color: 'black',
-  borderBottom: '1px solid black',
+  borderBottom: '1px solid #c8c8c8',
   borderMargin: '2px',
   flexDirection: 'column', // 기본적으로 세로 배치
   justifyContent: 'flex-start',
+  overflow: 'hidden',
+
   [theme.breakpoints.up('sm')]: {
     flexDirection: 'row', // 768px 이상에서는 가로 배치
     alignItems: 'center', // 로고와 메뉴 버튼이 세로로 붙지 않도록 정렬
-    justifyContent: 'flex-start', // 로고와 버튼이 왼쪽에 배치
+    justifyContent: 'space-between', // 로고와 버튼이 왼쪽에 배치
   },
 }));
 
 export default function Header() {
-  const pages = ['HOME', 'INFO', 'PRODUCT', 'CONTACT'];
+  const pages = ['HOME', 'INFO', 'PORTFOLIO', 'CONTACT'];
+  const [selectedMenu, setSelectedMenu] = useState<string | null>('HOME');
+  //클릭시 이동
+  const scrollToSection = (id: string): void => {
+    const element = document.getElementById(id.toLowerCase());
+    const appBar = document.querySelector('.appbar'); // Appbar의 클래스를 가져옴
+
+    if (element) {
+      const appBarHeight = appBar ? appBar.getBoundingClientRect().height : 0; // Appbar 높이 가져오기
+      const viewportHeight = window.innerHeight; // 현재 뷰포트 높이
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY; // 요소의 전체 위치
+      const adjustedPosition =
+        elementPosition -
+        viewportHeight / 2 +
+        element.clientHeight / 2 -
+        appBarHeight;
+      // 화면 중앙 정렬 후 Appbar 보정
+
+      window.scrollTo({
+        top: adjustedPosition,
+        behavior: 'smooth', // 부드러운 스크롤 적용
+      });
+    }
+  };
+
+  //화면에 보이는 내용에 따라 메뉴 선택표시가 변경됨
+  useEffect(() => {
+    const handleScroll = () => {
+      // 현재 스크롤 위치를 가져오고, 화면의 1/3 정도 아래를 기준으로 함
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      let newActiveSection = selectedMenu; // 기본적으로 이전 값을 유지
+      [...pages, 'PARTNER'].forEach((page) => {
+        const element = document.getElementById(page.toLowerCase());
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          // 현재 스크롤 위치가 해당 섹션의 범위 내에 있을 경우
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            newActiveSection = page;
+          }
+        }
+      });
+      //파트너일 경우도 INFO로 연결
+      if (newActiveSection === 'PARTNER') {
+        newActiveSection = 'INFO';
+      }
+      setSelectedMenu(newActiveSection); // 활성 섹션 업데이트
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedMenu]);
 
   return (
     <>
       <AppBar
+        className="appbar"
         position="fixed"
         sx={{
           backgroundColor: 'white',
           color: 'black',
           boxShadow: 'none',
-          zIndex: (theme) => theme.zIndex.drawer + 1,
+          zIndex: 10,
         }}
       >
         <StyledToolbar>
@@ -44,7 +102,7 @@ export default function Header() {
           <Box
             sx={{
               display: 'flex',
-              width: '100%',
+              width: { xs: '100%', sm: '250px' },
               justifyContent: 'space-between', // 로고와 Instagram 아이콘을 양쪽 끝에 배치
               alignItems: 'center',
             }}
@@ -67,27 +125,93 @@ export default function Header() {
               }}
             >
               <IconButton>
-                <InstagramIcon />
+                <InstagramIcon
+                  onClick={() =>
+                    window.open(
+                      'https://www.instagram.com/sungan__studio/',
+                      '_blank',
+                      'noopener,noreferrer',
+                    )
+                  }
+                />
               </IconButton>
             </Box>
           </Box>
 
-          {/* 메뉴 버튼들 */}
           <Box
             sx={{
               display: 'flex',
-              width: '800%',
-              justifyContent: 'flex-start',
-              gap: 2,
+              gridTemplateColumns: 'repeat(auto-fit, minmax(50px, 1fr))', // 메뉴 가로 배치
+              gap: { xs: 2, sm: 3 }, // 메뉴 간 간격
+              justifyContent: { xs: 'space-around', sm: 'start' },
+              width: '100%',
               mt: 1,
-              paddingLeft: '5px',
-              paddingRight: '5px',
             }}
           >
             {pages.map((page) => (
-              <Button key={page} sx={{ color: 'black' }}>
-                {page}
-              </Button>
+              <Box
+                key={page}
+                sx={{
+                  position: 'relative', // 텍스트가 겹치도록 설정
+                  display: 'grid', // Grid로 내부 요소 배치
+                  gridTemplateRows: '1fr', // 같은 행에 두 텍스트 배치
+                  alignItems: 'center',
+                  justifyItems: 'center',
+                  '&:hover .bigMenu': {
+                    opacity: selectedMenu === page ? 1 : 0, // 기본 메뉴 숨김
+                    transform: 'translateY(0px) scale(1.2)', // 위로 올라오면서 확대
+                    transition: 'transform 0.3s ease, opacity 0.3s ease',
+                    background: 'none',
+                  },
+                  '&:hover .upMenu': {
+                    opacity: selectedMenu === page ? 0 : 1, // 호버 시 올라오는 텍스트 표시
+                    transform: 'translateY(0px) scale(1.2)', // 위로 올라오면서 확대
+
+                    transition: 'transform 0.4s ease, opacity 0.4s ease',
+                    background: 'none',
+                  },
+                }}
+              >
+                {/* 기본 텍스트 */}
+                <Button
+                  className="bigMenu"
+                  sx={{
+                    color: 'black',
+                    fontFamily: 'Nanum Myeongjo',
+                    fontWeight: selectedMenu === page ? '700' : '400',
+                    fontSize: selectedMenu === page ? '1.1rem' : '1rem',
+                    gridColumn: '1 / 2', // 첫 번째 열
+                    opacity: 1, // 초기 상태에서 표시
+                    transform: 'translateY(0px)', // 초기 위치
+                    transition: 'transform 0.4s ease, opacity 0.4s ease',
+                    position: 'relative',
+                  }}
+                >
+                  {page}
+                </Button>
+
+                {/* 올라오는 텍스트 */}
+                <Button
+                  className="upMenu"
+                  sx={{
+                    color: 'black',
+                    fontFamily: 'Nanum Myeongjo',
+                    fontWeight: selectedMenu === page ? '700' : '400',
+                    fontSize: { xs: '1rem', sm: '1.1rem' },
+                    gridColumn: '1 / 2', // 같은 열
+                    opacity: 0, // 초기 상태에서 숨김
+                    transform: 'translateY(20px)', // 초기 위치 (아래쪽으로 이동)
+                    transition: 'transform 0.2s ease, opacity 0.2s ease',
+                    position: 'absolute', // 같은 셀 안에서 겹침
+                  }}
+                  onClick={() => {
+                    setSelectedMenu(page);
+                    scrollToSection(page);
+                  }}
+                >
+                  {page}
+                </Button>
+              </Box>
             ))}
           </Box>
 
@@ -99,7 +223,15 @@ export default function Header() {
             }}
           >
             <IconButton sx={{ marginLeft: 'auto', marginTop: '5px' }}>
-              <InstagramIcon />
+              <InstagramIcon
+                onClick={() =>
+                  window.open(
+                    'https://www.instagram.com/sungan__studio/',
+                    '_blank',
+                    'noopener,noreferrer',
+                  )
+                }
+              />
             </IconButton>
           </Box>
         </StyledToolbar>
