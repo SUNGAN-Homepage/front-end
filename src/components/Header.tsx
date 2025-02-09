@@ -143,6 +143,7 @@ export default function Header() {
               display: 'flex',
               gridTemplateColumns: 'repeat(auto-fit, minmax(50px, 1fr))', // 메뉴 가로 배치
               gap: { xs: 2, sm: 3 }, // 메뉴 간 간격
+              justifyContent: { xs: 'space-around', sm: 'start' },
               width: '100%',
               mt: 1,
             }}
