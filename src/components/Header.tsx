@@ -17,8 +17,8 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   color: 'black',
   borderBottom: '1px solid #c8c8c8',
   borderMargin: '2px',
-  flexDirection: 'column', // 기본적으로 세로 배치
-  justifyContent: 'flex-start',
+  flexDirection: 'column', // 기본적으로 가로 배치
+  justifyContent:"center",
   overflow: 'hidden',
 
   [theme.breakpoints.up('sm')]: {
@@ -145,6 +145,7 @@ export default function Header() {
               gap: { xs: 2, sm: 3 }, // 메뉴 간 간격
               width: '100%',
               mt: 1,
+              justifyContent:{xs:"space-between",sm:"flex-start"}
             }}
           >
             {pages.map((page) => (
@@ -157,18 +158,11 @@ export default function Header() {
                   alignItems: 'center',
                   justifyItems: 'center',
                   '&:hover .bigMenu': {
-                    opacity: selectedMenu === page ? 1 : 0, // 기본 메뉴 숨김
                     transform: 'translateY(0px) scale(1.2)', // 위로 올라오면서 확대
                     transition: 'transform 0.3s ease, opacity 0.3s ease',
                     background: 'none',
                   },
-                  '&:hover .upMenu': {
-                    opacity: selectedMenu === page ? 0 : 1, // 호버 시 올라오는 텍스트 표시
-                    transform: 'translateY(0px) scale(1.2)', // 위로 올라오면서 확대
 
-                    transition: 'transform 0.4s ease, opacity 0.4s ease',
-                    background: 'none',
-                  },
                 }}
               >
                 {/* 기본 텍스트 */}
@@ -178,35 +172,17 @@ export default function Header() {
                     color: 'black',
                     fontFamily: 'Nanum Myeongjo',
                     fontWeight: selectedMenu === page ? '700' : '400',
-                    fontSize: selectedMenu === page ? '1.1rem' : '1rem',
+                    fontSize: {xs:selectedMenu === page ? '1rem' : '0.8rem' ,sm:selectedMenu === page ? '1.1rem' : '1rem'},
                     gridColumn: '1 / 2', // 첫 번째 열
                     opacity: 1, // 초기 상태에서 표시
                     transform: 'translateY(0px)', // 초기 위치
                     transition: 'transform 0.4s ease, opacity 0.4s ease',
                     position: 'relative',
                   }}
-                >
-                  {page}
-                </Button>
-
-                {/* 올라오는 텍스트 */}
-                <Button
-                  className="upMenu"
-                  sx={{
-                    color: 'black',
-                    fontFamily: 'Nanum Myeongjo',
-                    fontWeight: selectedMenu === page ? '700' : '400',
-                    fontSize: { xs: '1rem', sm: '1.1rem' },
-                    gridColumn: '1 / 2', // 같은 열
-                    opacity: 0, // 초기 상태에서 숨김
-                    transform: 'translateY(20px)', // 초기 위치 (아래쪽으로 이동)
-                    transition: 'transform 0.2s ease, opacity 0.2s ease',
-                    position: 'absolute', // 같은 셀 안에서 겹침
-                  }}
-                  onClick={() => {
-                    setSelectedMenu(page);
-                    scrollToSection(page);
-                  }}
+                    onClick={() => {
+                      setSelectedMenu(page);
+                      scrollToSection(page);
+                    }}
                 >
                   {page}
                 </Button>
