@@ -1,12 +1,10 @@
-전체 섹션 스타일 .detail-intro {
+.detail-intro {
   padding: 20px;
   /*background-color: #f9f9f9;*/
   text-align: center;
 }
 
-.slick-dots {
-  top: 480px;
-}
+
 /* 슬라이드 컨텐츠 스타일 */
 .slide-content {
   display: flex;
