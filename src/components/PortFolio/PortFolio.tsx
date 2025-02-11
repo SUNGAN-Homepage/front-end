@@ -77,10 +77,10 @@ export const PortFolio: React.FC = () => {
     appendDots: (dots: ReactNode) => (
       <Box
         sx={{
-          marginLeft: '-20px',
+          marginLeft: '-40px',
         }}
       >
-        <ul style={{ margin: '0px' }}> {dots} </ul>
+        <ul style={{ margin: '0px' ,width:"100%"}}> {dots} </ul>
       </Box>
     ),
   };
