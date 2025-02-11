@@ -17,13 +17,7 @@ export const Intro = () => {
             marginLeft: { xs: 0, sm: 5 },
             padding: 4,
           }}
-          onClick={() =>
-            window.open(
-              'https://booking.naver.com/booking/6/bizes/665865/items/4352330?startDate=2025-02-05',
-              '_blank',
-              'noopener,noreferrer',
-            )
-          }
+
         >
           <Typography variant="h3" marginBottom={3} marginTop={10}>
             간략 소개
@@ -46,6 +40,13 @@ export const Intro = () => {
                 background: '#f5f5f5', // 호버 시 배경색 변경
               },
             }}
+            onClick={() =>
+              window.open(
+                'https://booking.naver.com/booking/6/bizes/665865/items/4352330?startDate=2025-02-05',
+                '_blank',
+                'noopener,noreferrer',
+              )
+            }
           >
             예약하기
           </Button>
