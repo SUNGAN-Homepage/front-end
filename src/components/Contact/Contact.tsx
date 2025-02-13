@@ -1,4 +1,4 @@
-import { Box, Typography, Divider } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 import ContactForm from './ContactForm';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
@@ -62,4 +62,4 @@ export const Contact = () => {
       </section>
     </AnimatedComponent>
   );
-};
+}
