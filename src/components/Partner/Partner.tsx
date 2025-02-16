@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -15,7 +15,7 @@ import logo8 from '../../assets/logo8.png';
 import { Box } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
-export const partnerData = [
+const partnerData = [
   { id: 1, name: '파트너 1', logo: logo1, url: 'https://www.naver.com' },
   { id: 2, name: '파트너 2', logo: logo2, url: 'https://www.daum.net' },
   { id: 3, name: '파트너 3', logo: logo3, url: 'https://www.instagram.com' },
@@ -26,7 +26,7 @@ export const partnerData = [
   { id: 8, name: '파트너 8', logo: logo8, url: 'https://www.naver.com' },
 ];
 
-export const Partner: React.FC = () => {
+function Partner() {
   const settings = {
     dots: true,
     infinite: true,
@@ -91,4 +91,5 @@ export const Partner: React.FC = () => {
       </section>
     </AnimatedComponent>
   );
-};
+}
+export default Partner;
