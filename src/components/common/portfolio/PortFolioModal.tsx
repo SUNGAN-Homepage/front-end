@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Close } from '@mui/icons-material';
-import image1 from '../../assets/portfolio1_1.jpg';
-import image2 from '../../assets/portfolio1_2.jpg';
-import image3 from '../../assets/portfolio1_3.jpg';
+import image1 from '../../../assets/portfolio1_1.jpg';
+import image2 from '../../../assets/portfolio1_2.jpg';
+import image3 from '../../../assets/portfolio1_3.jpg';
 import { Box } from '@mui/material';
+
 interface PortfolioModalProps {
   isOpen: boolean;
   currentImage: {

@@ -82,7 +82,7 @@
   width: 100%; /* 슬라이더가 화면 너비를 차지 */
 }
 .portfolio .slick-slider.slick-initialized {
-  width: 85%;
+  width: 90%;
 }
 
 .slick-arrow {

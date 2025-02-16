@@ -32,7 +32,7 @@ export const Partner: React.FC = () => {
     infinite: true, // 무한 반복
     speed: 2000, // 슬라이드 전환 속도
     slidesToShow: 4, // 기본값: 한 줄에 4개씩
-    rows: 2, // 2줄
+    rows: 1, // 2줄
     autoplay: true,
     autoplaySpeed: 2000,
     cssEase: 'linear',
