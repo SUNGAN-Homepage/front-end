@@ -16,41 +16,41 @@ import { Box } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
 export const partnerData = [
-  { id: 1, name: '파트너 1', logo: logo1 },
-  { id: 2, name: '파트너 2', logo: logo2 },
-  { id: 3, name: '파트너 3', logo: logo3 },
-  { id: 4, name: '파트너 4', logo: logo4 },
-  { id: 5, name: '파트너 5', logo: logo5 },
-  { id: 6, name: '파트너 6', logo: logo6 },
-  { id: 7, name: '파트너 7', logo: logo7 },
-  { id: 8, name: '파트너 8', logo: logo8 },
+  { id: 1, name: '파트너 1', logo: logo1, url: 'https://www.naver.com' },
+  { id: 2, name: '파트너 2', logo: logo2, url: 'https://www.daum.net' },
+  { id: 3, name: '파트너 3', logo: logo3, url: 'https://www.instagram.com' },
+  { id: 4, name: '파트너 4', logo: logo4, url: 'https://google.com' },
+  { id: 5, name: '파트너 5', logo: logo5, url: 'https://www.naver.com' },
+  { id: 6, name: '파트너 6', logo: logo6, url: 'https://www.naver.com' },
+  { id: 7, name: '파트너 7', logo: logo7, url: 'https://www.naver.com' },
+  { id: 8, name: '파트너 8', logo: logo8, url: 'https://www.naver.com' },
 ];
 
 export const Partner: React.FC = () => {
   const settings = {
-    dots: true, // 하단 네비게이션 점
-    infinite: true, // 무한 반복
-    speed: 2000, // 슬라이드 전환 속도
-    slidesToShow: 4, // 기본값: 한 줄에 4개씩
-    rows: 2, // 2줄
+    dots: true,
+    infinite: true,
+    speed: 2000,
+    slidesToShow: 4,
+    rows: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     cssEase: 'linear',
     responsive: [
       {
-        breakpoint: 1024, // 테블릿
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 4, // 4열
-          slidesToScroll: 1, // 4개씩 스크롤
-          rows: 2, // 2줄
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          rows: 2,
         },
       },
       {
-        breakpoint: 768, // 모바일
+        breakpoint: 768,
         settings: {
-          slidesToShow: 3, // 3열
-          slidesToScroll: 1, // 3개씩 스크롤
-          rows: 2, // 3줄
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          rows: 2,
         },
       },
     ],
@@ -74,7 +74,17 @@ export const Partner: React.FC = () => {
         <Slider {...settings}>
           {partnerData.map((partner) => (
             <div className="partner-item" key={partner.id}>
-              <img src={partner.logo} alt={partner.name} />
+              <a
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(partner.url, '_blank', 'width=1200,height=800');
+                }}
+              >
+                <img src={partner.logo} alt={partner.name} />
+              </a>
             </div>
           ))}
         </Slider>
