@@ -25,7 +25,7 @@ const imagesData = [
 ];
 
 function ProfileGallary() {
-  const [imageData, setImageData] = useState(imagesData);
+  const [imageData] = useState(imagesData);
 
   return (
     <>
