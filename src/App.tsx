@@ -1,13 +1,14 @@
 import Header from './components/Header.tsx';
 import './index.css';
-import { Intro } from './components/intro/Intro.tsx';
-import { DetailIntro } from './components/detailIntro/DetailIntro.tsx';
-import { Partner } from './components/partner/Partner.tsx';
-import { Contact } from './components/Contact/Contact.tsx';
-import { Footer } from './components/Footer.tsx';
+
+import DetailIntro from './components/detailIntro/DetailIntro.tsx';
+import Partner from './components/partner/Partner.tsx';
+import Contact from './components/Contact/Contact.tsx';
+import Footer from './components/Footer.tsx';
 import { Box, Divider } from '@mui/material';
-import ProfileGallary from './components/profileGallary/ProfileGallary.tsx';
-import EventsGallary from './components/eventsGallary/EventsGallary.tsx';
+import ProfileGallery from './components/profileGallery/ProfileGallery.tsx';
+import EventsGallery from './components/eventsGallery/EventsGallery.tsx';
+import Intro from './components/intro/Intro.tsx';
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
           }}
         />
         {/*포트폴리오*/}
-        <EventsGallary />
+        <EventsGallery />
         <Divider
           sx={{
             borderColor: 'gray',
@@ -55,7 +56,7 @@ function App() {
             marginX: '20px',
           }}
         />
-        <ProfileGallary />
+        <ProfileGallery />
         <Divider
           sx={{
             borderColor: 'gray',

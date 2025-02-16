@@ -24,7 +24,7 @@ const imagesData = [
   { src: image10, title: '숭례문', date: '2024-09-25' },
 ];
 
-function ProfileGallary() {
+function ProfileGallery() {
   const [imageData] = useState(imagesData);
 
   return (
@@ -34,4 +34,4 @@ function ProfileGallary() {
   );
 }
 
-export default ProfileGallary;
+export default ProfileGallery;

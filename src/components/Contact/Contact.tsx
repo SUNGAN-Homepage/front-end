@@ -2,7 +2,7 @@ import { Box, Divider, Typography } from '@mui/material';
 import ContactForm from './ContactForm';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
-export const Contact = () => {
+function Contact() {
   return (
     <AnimatedComponent id={'contact'}>
       <section className="Contact">
@@ -63,3 +63,4 @@ export const Contact = () => {
     </AnimatedComponent>
   );
 }
+export default Contact;
