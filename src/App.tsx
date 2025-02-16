@@ -1,14 +1,14 @@
-import Header from './components/Header.tsx';
 import './index.css';
 
-import DetailIntro from './components/detailIntro/DetailIntro.tsx';
-import Partner from './components/partner/Partner.tsx';
-import Contact from './components/Contact/Contact.tsx';
-import Footer from './components/Footer.tsx';
 import { Box, Divider } from '@mui/material';
-import ProfileGallery from './components/profileGallery/ProfileGallery.tsx';
-import EventsGallery from './components/eventsGallery/EventsGallery.tsx';
-import Intro from './components/intro/Intro.tsx';
+import Header from './components/Header';
+import Intro from './components/intro/Intro';
+import Partner from './components/partner/Partner';
+import EventsGallery from './components/eventsGallery/EventsGallery';
+import ProfileGallery from './components/profileGallery/ProfileGallery';
+import Footer from './components/Footer';
+import DetailIntro from './components/detailIntro/DetailIntro.tsx';
+import Contact from './components/contact/Contact.tsx';
 
 function App() {
   return (
