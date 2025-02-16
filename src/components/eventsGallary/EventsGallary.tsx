@@ -15,7 +15,7 @@ const imagesData = [
 ];
 
 function EventsGallary() {
-  const [imageData, setImageData] = useState(imagesData);
+  const [imageData] = useState(imagesData);
 
   return (
     <>
