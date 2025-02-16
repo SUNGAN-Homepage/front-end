@@ -14,7 +14,7 @@ const imagesData = [
   { src: EventsImg5, title: '이벤트 이미지5', date: '2024-06-30' },
 ];
 
-function EventsGallary() {
+function EventsGallery() {
   const [imageData] = useState(imagesData);
 
   return (
@@ -24,4 +24,4 @@ function EventsGallary() {
   );
 }
 
-export default EventsGallary;
+export default EventsGallery;
