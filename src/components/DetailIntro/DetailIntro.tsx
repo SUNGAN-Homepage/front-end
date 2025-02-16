@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Slider from 'react-slick'; // 두 번째 이미지 경로
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -8,7 +8,7 @@ import image2 from '../../assets/image2.jpeg';
 import { Box } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
-export const DetailIntro: React.FC = () => {
+function DetailIntro() {
   const settings = {
     dots: true,
     infinite: true,
@@ -17,7 +17,7 @@ export const DetailIntro: React.FC = () => {
     slidesToScroll: 1,
     arrows: true,
     appendDots: (dots: ReactNode) => (
-      <Box sx={{  marginLeft: '-20px' }}>
+      <Box sx={{ marginLeft: '-20px' }}>
         <ul> {dots} </ul>
       </Box>
     ),
@@ -66,4 +66,6 @@ export const DetailIntro: React.FC = () => {
       </section>
     </AnimatedComponent>
   );
-};
+}
+
+export default DetailIntro;

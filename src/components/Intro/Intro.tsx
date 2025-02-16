@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 
-export const Intro = () => {
+function Intro() {
   return (
     //추후 이미지로 대체
     <AnimatedComponent id="home">
@@ -17,7 +17,6 @@ export const Intro = () => {
             marginLeft: { xs: 0, sm: 5 },
             padding: 4,
           }}
-
         >
           <Typography variant="h3" marginBottom={3} marginTop={10}>
             간략 소개
@@ -54,4 +53,6 @@ export const Intro = () => {
       </Box>
     </AnimatedComponent>
   );
-};
+}
+
+export default Intro;
