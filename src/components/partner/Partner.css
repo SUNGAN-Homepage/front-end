@@ -18,7 +18,7 @@
     margin-bottom: 40px; /* 아래쪽 간격 */
     display: inline-block; /* 텍스트 길이에 따라 너비 조정 */
   }
-  
+
   .partner-title::before,
   .partner-title::after {
     content: ""; /* 선 생성 */
@@ -28,12 +28,12 @@
     background-color: black; /* 선 색상 */
     left: -10%; /* 중앙 정렬을 위해 위치 조정 */
   }
-  
+
   .partner-title::before {
     top: -10px; /* 텍스트 위 첫 번째 선 위치 */
     box-shadow: 0 -6px 0 0 black; /* 위 두 번째 선 */
   }
-  
+
   .partner-title::after {
     bottom: -10px; /* 텍스트 아래 첫 번째 선 위치 */
     box-shadow: 0 6px 0 0 black; /* 아래 두 번째 선 */
@@ -46,7 +46,7 @@
       margin-bottom: 30px; /* 여백 조정 */
     }
   }
-  
+
   /* 데스크톱용 스타일 */
   @media (min-width: 1025px) {
     .partner-title {
@@ -61,7 +61,7 @@
     gap: 15px; /* 박스 간 간격 */
     justify-items: center;
   }
-  
+
   .partner-item {
     display: flex;
     justify-content: center;
@@ -76,7 +76,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 기본 그림자 */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 효과 */
   }
-  
+
   .partner-item img {
     max-width: 100%; /* 로고 이미지가 박스의 너비를 넘지 않도록 설정 */
     max-height: 100%; /* 로고 이미지가 박스의 높이를 넘지 않도록 설정 */
@@ -91,15 +91,15 @@
   .slick-slider {
     width: 100%;
   }
-  
+
   .slick-list {
     overflow: hidden;
   }
-  
+
   .slick-track {
     display: flex;
   }
-  
+
   .slick-slide {
     display: flex;
     justify-content: center;
@@ -107,14 +107,14 @@
     box-sizing: border-box;
     padding: 10px; /* 슬라이드 간격 */
   }
-  
+
 /* 테블릿 이상: 4열 */
 @media (min-width: 768px) {
     .partner-grid {
       grid-template-columns: repeat(4, 1fr); /* 테블릿: 4열 */
     }
   }
-  
+
   /* 데스크톱 이상: 8열 */
   @media (min-width: 1024px) {
     .partner-grid {
@@ -126,4 +126,3 @@
 
 
   }
-  

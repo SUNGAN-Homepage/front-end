@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { PortFolio } from '../common/portfolio/PortFolio.tsx';
 import image1 from '../../assets/imageP_1.png';
 import image2 from '../../assets/imageP_2.jpg';
@@ -10,6 +10,13 @@ import image7 from '../../assets/imageP_7.jpg';
 import image8 from '../../assets/imageP_8.jpg';
 import image9 from '../../assets/imageP_9.jpg';
 import image10 from '../../assets/imageP_10.jpg';
+import './ProfileGallery.css';
+import { Box, useMediaQuery } from '@mui/material';
+import {
+  CustomNextArrow,
+  CustomPrevArrow,
+} from '../common/react-slick/CustomArrow.tsx';
+import PortFolioModal from '../common/portfolio/PortFolioModal.tsx';
 
 const imagesData = [
   { src: image1, title: '분홍빛 세상', date: '2024-10-01' },
@@ -26,11 +33,77 @@ const imagesData = [
 
 function ProfileGallery() {
   const [imageData] = useState(imagesData);
+  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1024px)');
+  const isMobile = useMediaQuery('(min-width: 385px) and (max-width: 767px)');
+  const isSmallMobile = useMediaQuery('(max-width: 384px)');
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    centerMode: !(isMobile || isSmallMobile),
+    lazyLoad: true,
+    slidesToShow: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
+    slidesToScroll: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    accessibility: false,
+    appendDots: (dots: ReactNode) => (
+      <Box
+        sx={{
+          marginLeft: '-40px',
+        }}
+      >
+        <ul style={{ margin: '0px', width: '100%' }}> {dots} </ul>
+      </Box>
+    ),
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState<{
+    src: string;
+    title: string;
+    date: string;
+  } | null>(null);
+
+  const handleImageClick = (image: {
+    src: string;
+    title: string;
+    date: string;
+  }) => {
+    setCurrentImage(image);
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setCurrentImage(null);
+  };
 
   return (
-    <>
-      <PortFolio isProfile={true} imageData={imageData} />
-    </>
+    <div className="profile">
+      <PortFolio isProfile={true} imageData={imageData} settings={settings}>
+        {imageData.map((image, index) => (
+          <div
+            className="slide"
+            key={index}
+            onClick={() => handleImageClick(image)}
+          >
+            <img
+              className={'profile-img'}
+              src={image.src}
+              alt={image.title}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+        ))}
+      </PortFolio>
+      <PortFolioModal
+        isOpen={isOpen}
+        currentImage={currentImage}
+        handleClose={handleClose}
+      />
+    </div>
   );
 }
 

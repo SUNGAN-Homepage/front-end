@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Close } from '@mui/icons-material';
 import image1 from '../../../assets/portfolio1_1.jpg';
 import image2 from '../../../assets/portfolio1_2.jpg';
 import image3 from '../../../assets/portfolio1_3.jpg';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { Close } from '@mui/icons-material';
 
 interface PortfolioModalProps {
   isOpen: boolean;
@@ -20,70 +20,94 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
   currentImage,
   handleClose,
 }) => {
-  const [selectedImg, setSelectedImg] = useState<string>('');
   const [imgArr, setImgArr] = useState<string[]>([]);
   useEffect(() => {
     if (isOpen && currentImage) {
       //임시로 고정 이미지 배열 생성,백엔드 만들어지면 수정
-      setSelectedImg(currentImage.src);
       const defaultImage = currentImage.src;
       setImgArr([defaultImage, image1, image2, image3]);
     }
   }, [isOpen, currentImage]);
 
   return (
-    <Box>
+    <>
       {isOpen && currentImage && (
         <div className="modal" onClick={handleClose}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={handleClose}>
-              <Close />
-            </button>
-            <Box sx={{ width: '100%', height: { xs: '60vh', sm: '60vh' } }}>
-              <img
-                src={selectedImg}
-                alt={'선택된 이미지'}
-                style={{ margin: '0 auto', height: '100%' }}
-              />
+          <button
+            className="close-button"
+            onClick={handleClose}
+            style={{
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              zIndex: '5',
+            }}
+          >
+            <Close />
+          </button>
+          <Box
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            sx={{
+              borderRadius: '7px',
+              maxHeight: '90vh',
+              overflow: 'auto',
+              backgroundColor: 'white',
+              '&::-webkit-scrollbar': {
+                width: '10px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                borderRadius: '10px',
+              },
+            }}
+          >
+            <Box>
+              <Box
+                sx={{
+                  color: 'black',
+                  fontSize: '30px',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  marginBottom: '10px',
+                }}
+              >
+                {currentImage.title}
+              </Box>
+              <Typography
+                variant="subtitle1"
+                sx={{ color: 'black', borderTop: '1px solid #eeeeee' }}
+              >
+                행사일시 : {currentImage.date}
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{ color: 'black', borderTop: '1px solid #eeeeee' }}
+              >
+                행사장소 : 연암공과대학교 산학 협력단
+              </Typography>
             </Box>
             <Box
               sx={{
-                display: 'flex',
-                gap: 1,
-                marginTop: '-15px',
                 justifyContent: 'center',
               }}
             >
               {imgArr.map((image, index) => (
-                <Box
-                  key={index}
-                  sx={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    setSelectedImg(image);
-                  }}
-                >
+                <Box key={index} sx={{ cursor: 'pointer' }}>
                   <img
                     src={image}
                     alt={`Slide ${index}`}
                     style={{
-                      width: '55px',
-                      height: '55px',
-                      outline:
-                        selectedImg === image ? '2.5px solid blue' : 'none',
+                      width: '100%',
                     }}
                   />
                 </Box>
               ))}
             </Box>
-            <h3>{currentImage.title}</h3>
-            <p>
-              <strong>촬영 일:</strong> {currentImage.date}
-            </p>
-          </div>
+          </Box>
         </div>
       )}
-    </Box>
+    </>
   );
 };
-
 export default PortFolioModal;

@@ -1,7 +1,3 @@
-.portfolio {
-  background-color: #ffffff;
-  text-align: center;
-}
 .portfolio-title {
   font-family: 'Georgia', serif; /* 고급스러운 폰트 */
   font-size: 1rem; /* 제목 크기 */
@@ -81,9 +77,6 @@
   margin: 0 auto;
   width: 100%; /* 슬라이더가 화면 너비를 차지 */
 }
-.portfolio .slick-slider.slick-initialized {
-  width: 90%;
-}
 
 .slick-arrow {
   /*arrow 때문에 모바일에서 움직임이 생김*/
@@ -95,9 +88,7 @@
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.portfolio .slick-slide {
-  opacity: 0.5; /* 기본적으로 어둡게 설정 */
-}
+
 .slide img {
   position: absolute;
   top: 0;
@@ -109,10 +100,7 @@
   transition: transform 0.2s ease; /* 이미지 확대 전환 효과 */
 }
 
-/* Hover 애니메이션 */
-.portfolio .slick-slide:hover {
-  opacity: 1;
-}
+
 .slide:hover {
   transform: scale(1.02); /* 슬라이드 전체 확대 */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
@@ -121,6 +109,7 @@
 .slide:hover img {
   transform: scale(1.1); /* 이미지 약간 더 확대 */
 }
+
 
 @media (max-width: 767px) {
   .slick-slide.slick-active.slick-current {
@@ -136,10 +125,6 @@
 
 /* 테블릿용 스타일 */
 @media (min-width: 768px) and (max-width: 1024px) {
-  /*.portfolio {*/
-  /*  padding: 20px 80px;*/
-  /*}*/
-
   .portfolio-title {
     font-size: 2rem; /* 테블릿에서 텍스트 크기 증가 */
     margin-bottom: 30px; /* 여백 조정 */

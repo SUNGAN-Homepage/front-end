@@ -29,6 +29,7 @@ const partnerData = [
 function Partner() {
   const settings = {
     dots: true,
+    lazyLoad: true,
     infinite: true,
     speed: 2000,
     slidesToShow: 4,
