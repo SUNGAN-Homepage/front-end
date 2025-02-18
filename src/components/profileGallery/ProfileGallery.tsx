@@ -99,6 +99,7 @@ function ProfileGallery() {
         ))}
       </PortFolio>
       <PortFolioModal
+        isProfile={true}
         isOpen={isOpen}
         currentImage={currentImage}
         handleClose={handleClose}

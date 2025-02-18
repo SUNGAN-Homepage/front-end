@@ -13,12 +13,14 @@ interface PortfolioModalProps {
     date: string;
   } | null;
   handleClose: () => void;
+  isProfile: boolean;
 }
 
 const PortFolioModal: React.FC<PortfolioModalProps> = ({
   isOpen,
   currentImage,
   handleClose,
+  isProfile,
 }) => {
   const [imgArr, setImgArr] = useState<string[]>([]);
   useEffect(() => {
@@ -92,17 +94,32 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
                 justifyContent: 'center',
               }}
             >
-              {imgArr.map((image, index) => (
-                <Box key={index} sx={{ cursor: 'pointer' }}>
+              {isProfile ? (
+                <>
                   <img
-                    src={image}
-                    alt={`Slide ${index}`}
+                    src={imgArr[0]}
+                    alt={`img`}
                     style={{
-                      width: '100%',
+                      height: '100vh',
+                      // width: '100%',
                     }}
                   />
-                </Box>
-              ))}
+                </>
+              ) : (
+                <>
+                  {imgArr.map((image, index) => (
+                    <Box key={index} sx={{ cursor: 'pointer' }}>
+                      <img
+                        src={image}
+                        alt={`Slide ${index}`}
+                        style={{
+                          width: '100%',
+                        }}
+                      />
+                    </Box>
+                  ))}
+                </>
+              )}
             </Box>
           </Box>
         </div>
