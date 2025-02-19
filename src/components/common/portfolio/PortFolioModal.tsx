@@ -13,7 +13,7 @@ interface PortfolioModalProps {
     date: string;
   } | null;
   handleClose: () => void;
-  isProfile: boolean;
+  isProfile?: boolean;
 }
 
 const PortFolioModal: React.FC<PortfolioModalProps> = ({
