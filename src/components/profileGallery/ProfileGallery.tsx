@@ -10,6 +10,8 @@ import image7 from '../../assets/imageP_7.jpg';
 import image8 from '../../assets/imageP_8.jpg';
 import image9 from '../../assets/imageP_9.jpg';
 import image10 from '../../assets/imageP_10.jpg';
+import profileImg1 from '../../assets/profile1.jpg';
+import profileImg2 from '../../assets/profile2.jpg';
 import './ProfileGallery.css';
 import { Box, useMediaQuery } from '@mui/material';
 import {
@@ -19,6 +21,8 @@ import {
 import PortFolioModal from '../common/portfolio/PortFolioModal.tsx';
 
 const imagesData = [
+  { src: profileImg1, title: '프로필 사진1', date: '2025-02-19' },
+  { src: profileImg2, title: '프로필 사진2', date: '2025-02-19' },
   { src: image1, title: '분홍빛 세상', date: '2024-10-01' },
   { src: image2, title: '바다같은 구름', date: '2024-07-22' },
   { src: image3, title: '은하단 중심', date: '2023-12-10' },
@@ -99,6 +103,7 @@ function ProfileGallery() {
         ))}
       </PortFolio>
       <PortFolioModal
+        isProfile={true}
         isOpen={isOpen}
         currentImage={currentImage}
         handleClose={handleClose}

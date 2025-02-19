@@ -13,12 +13,14 @@ interface PortfolioModalProps {
     date: string;
   } | null;
   handleClose: () => void;
+  isProfile: boolean;
 }
 
 const PortFolioModal: React.FC<PortfolioModalProps> = ({
   isOpen,
   currentImage,
   handleClose,
+  isProfile,
 }) => {
   const [imgArr, setImgArr] = useState<string[]>([]);
   useEffect(() => {
@@ -76,33 +78,59 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
               </Box>
               <Typography
                 variant="subtitle1"
-                sx={{ color: 'black', borderTop: '1px solid #eeeeee' }}
+                sx={{
+                  color: 'black',
+                  borderTop: '1px solid #eeeeee',
+                  borderBottom: '1px solid #eeeeee',
+                }}
               >
-                행사일시 : {currentImage.date}
+                촬영일시 : {currentImage.date}
               </Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{ color: 'black', borderTop: '1px solid #eeeeee' }}
-              >
-                행사장소 : 연암공과대학교 산학 협력단
-              </Typography>
+              {!isProfile && (
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    color: 'black',
+                    borderBottom: '1px solid #eeeeee',
+                  }}
+                >
+                  행사장소 : 연암공과대학교 산학 협력단
+                </Typography>
+              )}
             </Box>
             <Box
               sx={{
                 justifyContent: 'center',
               }}
             >
-              {imgArr.map((image, index) => (
-                <Box key={index} sx={{ cursor: 'pointer' }}>
+              {isProfile ? (
+                <>
                   <img
-                    src={image}
-                    alt={`Slide ${index}`}
+                    src={imgArr[0]}
+                    alt={`img`}
                     style={{
-                      width: '100%',
+                      height: '100vh',
+                      background: 'white',
+                      // width: '100vw',
+                      // width: '100%',
                     }}
                   />
-                </Box>
-              ))}
+                </>
+              ) : (
+                <>
+                  {imgArr.map((image, index) => (
+                    <Box key={index} sx={{ cursor: 'pointer' }}>
+                      <img
+                        src={image}
+                        alt={`Slide ${index}`}
+                        style={{
+                          width: '100%',
+                        }}
+                      />
+                    </Box>
+                  ))}
+                </>
+              )}
             </Box>
           </Box>
         </div>
