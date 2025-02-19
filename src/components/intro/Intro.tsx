@@ -19,10 +19,10 @@ function Intro() {
           }}
         >
           <Typography variant="h3" marginBottom={3} marginTop={10}>
-            간략 소개
+            지역 축제 및 행사 아카이빙 플랫폼
           </Typography>
           <Typography variant="h4" marginBottom={10}>
-            간단하게 기업에 대한 소개
+            지역 축제 및 행사에 대하여 기록을 남기는 아카이빙 플랫폼입니다.
           </Typography>
 
           <Button

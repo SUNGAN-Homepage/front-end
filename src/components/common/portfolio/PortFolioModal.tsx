@@ -78,16 +78,25 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
               </Box>
               <Typography
                 variant="subtitle1"
-                sx={{ color: 'black', borderTop: '1px solid #eeeeee' }}
+                sx={{
+                  color: 'black',
+                  borderTop: '1px solid #eeeeee',
+                  borderBottom: '1px solid #eeeeee',
+                }}
               >
-                행사일시 : {currentImage.date}
+                촬영일시 : {currentImage.date}
               </Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{ color: 'black', borderTop: '1px solid #eeeeee' }}
-              >
-                행사장소 : 연암공과대학교 산학 협력단
-              </Typography>
+              {!isProfile && (
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    color: 'black',
+                    borderBottom: '1px solid #eeeeee',
+                  }}
+                >
+                  행사장소 : 연암공과대학교 산학 협력단
+                </Typography>
+              )}
             </Box>
             <Box
               sx={{
@@ -101,6 +110,8 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
                     alt={`img`}
                     style={{
                       height: '100vh',
+                      background: 'white',
+                      // width: '100vw',
                       // width: '100%',
                     }}
                   />
