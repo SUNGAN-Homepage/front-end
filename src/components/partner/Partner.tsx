@@ -42,7 +42,7 @@ function Partner() {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
-          rows: 2,
+          rows: 1,
         },
       },
       {
@@ -50,7 +50,7 @@ function Partner() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          rows: 2,
+          rows: 1,
         },
       },
     ],
