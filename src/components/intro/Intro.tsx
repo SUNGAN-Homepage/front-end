@@ -22,7 +22,7 @@ function Intro() {
             지역 축제 및 행사 아카이빙 플랫폼
           </Typography>
           <Typography variant="h4" marginBottom={10}>
-            지역 축제 및 행사에 대하여 기록을 남기는 아카이빙 플랫폼입니다.
+            지역 축제 및 행사 기록을 남기는 아카이빙 플랫폼입니다.
           </Typography>
 
           <Button
