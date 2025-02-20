@@ -4,7 +4,15 @@
 }
 
 .profile .slick-slider.slick-initialized {
-    width: 90%;
+    width:85%;
+    @media(min-width: 768px ) and (max-width:1024px){
+        width:90%;
+    }
+    @media(min-width:1025px){
+        width: 100%;
+
+    }
+
 }
 .profile .slick-slide {
     opacity: 0.5; /* 기본적으로 어둡게 설정 */
