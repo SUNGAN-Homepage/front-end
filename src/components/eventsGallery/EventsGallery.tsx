@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import EventsImg1 from '../../assets/EventsImg.jpg';
 import EventsImg2 from '../../assets/EventsImg (2).jpg';
 import EventsImg3 from '../../assets/EventsImg (3).jpg';
@@ -33,8 +33,8 @@ function EventsGallery() {
     lazyLoad: true,
     infinite: false,
     speed: 500,
-    slidesToShow: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 3,
-    slidesToScroll: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 3,
+    slidesToShow: isMobile || isSmallMobile ? 1 : isTablet ? 4 : 4,
+    slidesToScroll: isMobile || isSmallMobile ? 1 : isTablet ? 4 : 4,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     accessibility: false,
@@ -65,37 +65,14 @@ function EventsGallery() {
     <>
       <PortFolio imageData={imagesData} isProfile={false} settings={settings}>
         {imagesData.map((image, index) => (
-          <Box
-            key={index}
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '0px',
-              padding: '0px',
-              borderRadius: '10px',
-              textAlign: 'center',
-              cursor: 'pointer',
-            }}
-            onClick={() => handleImageClick(image)}
-          >
-            <img
-              src={image.src}
-              alt={image.title}
-              style={{
-                width: 'auto', // 비율 유지
-                maxWidth: '90%', // 부모 요소보다 커지지 않도록
-                height: '200px', // 자동 크기 조정
-                display: 'block', // 블록 요소로 변경하여 중앙 정렬
-                margin: 'auto', // 가로 중앙 정렬
-                borderRadius: '5px',
-              }}
-            />
+          <div key={index} onClick={() => handleImageClick(image)}>
+            <div className="slide">
+              <img className={'events-img'} src={image.src} alt={image.title} />
+            </div>
             <h3 style={{ marginTop: '10px', marginBottom: '0px' }}>
               {image.title}
             </h3>
-          </Box>
+          </div>
         ))}
       </PortFolio>
       <PortFolioModal

@@ -82,7 +82,7 @@
   /*arrow 때문에 모바일에서 움직임이 생김*/
   /*margin-right:100px;*/
 }
-.slide {
+.profile .slide {
   position: relative;
   padding-top: 160%; /* 4:5 비율 */
   overflow: hidden;
