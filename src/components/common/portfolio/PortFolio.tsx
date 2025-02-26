@@ -5,17 +5,11 @@ import 'slick-carousel/slick/slick-theme.css';
 import './PortFolio.css';
 import { AnimatedComponent } from '../AnimatedComponent.tsx';
 
-interface ImageType {
-  src: string;
-  title: string;
-  date: string;
-}
 export const PortFolio = ({
   isProfile,
   settings,
   children,
 }: {
-  imageData: ImageType[];
   isProfile: boolean;
   settings: object;
   children: ReactNode;
@@ -25,7 +19,7 @@ export const PortFolio = ({
       <AnimatedComponent id={'gallery'}>
         <section className={isProfile ? 'profile' : 'events'}>
           <h2 className="portfolio-title">
-            {isProfile ? 'Profile Gallery' : 'Events Gallery'}
+            {isProfile ? 'Profile' : 'Business'}
           </h2>
           <Slider {...settings}>{children}</Slider>
         </section>

@@ -86,7 +86,7 @@ function ProfileGallery() {
 
   return (
     <div className="profile">
-      <PortFolio isProfile={true} imageData={imageData} settings={settings}>
+      <PortFolio isProfile={true} settings={settings}>
         {imageData.map((image, index) => (
           <div
             className="slide"
