@@ -11,32 +11,18 @@ import {
 } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import axios from 'axios';
+import { client } from '../../api/api.tsx';
 
 export default function ContactForm() {
-  const [name, setName] = useState<string>();
-  const [company, setCompany] = useState<string>();
-  const [email, setEmail] = useState<string>();
-  const [phone, setPhone] = useState<string>();
-  const [inquiryType, setInquiryType] = useState<string>();
-  const [text, setText] = useState<string>();
-  console.log(
-    'name:',
-    name,
-    'company:',
-    company,
-    'email:',
-    email,
-    'phone:',
-    phone,
-    'inquiryType:',
-    inquiryType,
-    'text:',
-    text,
-  );
+  const [name, setName] = useState<string>('');
+  const [company, setCompany] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
+  const [text, setText] = useState<string>('');
 
   const handleChangeInquiry = (event: SelectChangeEvent) => {
-    setInquiryType(event.target.value);
+    setCategory(event.target.value);
   };
 
   const handleSubmit = async () => {
@@ -45,14 +31,21 @@ export default function ContactForm() {
       company: company || 'NA',
       email,
       phone: phone || 'NA',
-      inquiryType,
-      text: text || 'NA',
+      category,
+      subject: 'contact',
+      message: text || 'NA',
     };
-    if (!name || !email || !inquiryType) {
+    if (!name || !email || !category) {
       alert('필수 사항을 입력해 주세요');
     } else {
       try {
-        await axios.post('aaasdf', data);
+        await client.post(`/api/v1/contact/send`, data);
+        setName('');
+        setCompany('');
+        setEmail('');
+        setPhone('');
+        setCategory('');
+        setText('');
       } catch (error) {
         console.error('Error fetching data:', error);
         alert('오류 발생');
@@ -123,7 +116,7 @@ export default function ContactForm() {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           label={'문의 유형'}
-          value={inquiryType}
+          value={category}
           onChange={handleChangeInquiry}
         >
           <MenuItem value={'프로필 촬영'}>프로필 촬영</MenuItem>
@@ -158,7 +151,7 @@ export default function ContactForm() {
           }}
           onClick={handleSubmit}
         >
-          제출
+          전송
         </Button>
       </Box>
       <Divider

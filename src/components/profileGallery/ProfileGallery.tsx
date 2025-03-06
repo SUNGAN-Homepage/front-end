@@ -1,80 +1,52 @@
-import { ReactNode, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { PortFolio } from '../common/portfolio/PortFolio.tsx';
-import image1 from '../../assets/imageP_1.png';
-import image2 from '../../assets/imageP_2.jpg';
-import image3 from '../../assets/imageP_3.png';
-import image4 from '../../assets/imageP_4.jpg';
-import image5 from '../../assets/imageP_5.jpg';
-import image6 from '../../assets/imageP_6.jpg';
-import image7 from '../../assets/imageP_7.jpg';
-import image8 from '../../assets/imageP_8.jpg';
-import image9 from '../../assets/imageP_9.jpg';
-import image10 from '../../assets/imageP_10.jpg';
-import profileImg1 from '../../assets/profile1.jpg';
-import profileImg2 from '../../assets/profile2.jpg';
 import './ProfileGallery.css';
 import { Box, useMediaQuery } from '@mui/material';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import {
   CustomNextArrow,
   CustomPrevArrow,
 } from '../common/react-slick/CustomArrow.tsx';
 import PortFolioModal from '../common/portfolio/PortFolioModal.tsx';
+import Loading from '../common/Loading/Loading.tsx';
+import { useQuery } from 'react-query';
+import { client } from '../../api/api.tsx';
+import Slider from 'react-slick';
+import { styled } from '@mui/material/styles'; // react-slick import
 
-const imagesData = [
-  { src: profileImg1, title: '프로필 사진1', date: '2025-02-19' },
-  { src: profileImg2, title: '프로필 사진2', date: '2025-02-19' },
-  { src: image1, title: '분홍빛 세상', date: '2024-10-01' },
-  { src: image2, title: '바다같은 구름', date: '2024-07-22' },
-  { src: image3, title: '은하단 중심', date: '2023-12-10' },
-  { src: image4, title: '초록빛 들판', date: '2024-08-01' },
-  { src: image5, title: '위대한 모험의 시작', date: '2024-06-30' },
-  { src: image6, title: '가을의 중심', date: '2023-12-18' },
-  { src: image7, title: '미니어처 세상', date: '2024-12-20' },
-  { src: image8, title: '도시의 거울', date: '2024-12-22' },
-  { src: image9, title: '유럽 어딘가', date: '2024-12-25' },
-  { src: image10, title: '숭례문', date: '2024-09-25' },
-];
+interface Data {
+  date: string;
+  description: string;
+  portfolioId: number;
+  title: string;
+  url: string[];
+}
 
 function ProfileGallery() {
-  const [imageData] = useState(imagesData);
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1024px)');
   const isMobile = useMediaQuery('(min-width: 385px) and (max-width: 767px)');
   const isSmallMobile = useMediaQuery('(max-width: 384px)');
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    centerMode: !(isMobile || isSmallMobile),
-    lazyLoad: true,
-    slidesToShow: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
-    slidesToScroll: isMobile || isSmallMobile ? 1 : isTablet ? 3 : 4,
-    prevArrow: <CustomPrevArrow />,
-    nextArrow: <CustomNextArrow />,
-    accessibility: false,
-    appendDots: (dots: ReactNode) => (
-      <Box
-        sx={{
-          marginLeft: '-40px',
-        }}
-      >
-        <ul style={{ margin: '0px', width: '100%' }}> {dots} </ul>
-      </Box>
-    ),
-  };
-
+  const sliderRef = useRef<Slider | null>(null); // sliderRef로 슬라이더 컴포넌트를 참조
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0); // 현재 슬라이드 인덱스를 추적
   const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState<{
-    src: string;
-    title: string;
-    date: string;
-  } | null>(null);
+  const [currentImage, setCurrentImage] = useState<Data | null>(null);
 
-  const handleImageClick = (image: {
-    src: string;
-    title: string;
-    date: string;
-  }) => {
+  const { data, isLoading } = useQuery<Data[]>(
+    'profileData', // query key
+    async () => {
+      const response = await client.get('/api/v1/portfolio?type=profile');
+      return response.data; // 데이터를 반환
+    },
+    {
+      onError: (error) => {
+        console.error(error);
+        alert('에러가 발생했습니다.');
+      },
+    },
+  );
+
+  const handleImageClick = (image: Data) => {
     setCurrentImage(image);
     setIsOpen(true);
   };
@@ -84,10 +56,48 @@ function ProfileGallery() {
     setCurrentImage(null);
   };
 
+  // 도트 클릭 시 해당 슬라이드로 이동
+  const handleDotClick = (index: number) => {
+    setCurrentSlideIndex(index); // 클릭된 도트의 인덱스 저장
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(index); // 해당 슬라이드로 이동
+    }
+  };
+  const settings = useMemo(() => {
+    const slideToShow = isMobile || isSmallMobile ? 1 : isTablet ? 4 : 4;
+
+    return {
+      dots: false, // 기본 도트 표시
+      infinite: true,
+      speed: 500,
+      // centerMode: !(isMobile || isSmallMobile),
+      lazyLoad: true,
+      slidesToShow: slideToShow,
+      slidesToScroll: slideToShow,
+      prevArrow: (
+        <CustomPrevArrow onClick={() => sliderRef.current?.slickPrev()} />
+      ), // CustomPrevArrow 클릭 시 이전 슬라이드로 이동
+      nextArrow: (
+        <CustomNextArrow onClick={() => sliderRef.current?.slickNext()} />
+      ), // CustomNextArrow 클릭 시 다음 슬라이드로 이동
+      accessibility: false,
+      afterChange: (current: number) => {
+        setCurrentSlideIndex(current); // 슬라이드 변경 시 현재 슬라이드 인덱스 업데이트
+      },
+    };
+  }, [isMobile, isSmallMobile, isTablet]);
+  const dotCount = Math.ceil((data?.length || 0) / settings.slidesToShow);
+
   return (
     <div className="profile">
-      <PortFolio isProfile={true} imageData={imageData} settings={settings}>
-        {imageData.map((image, index) => (
+      <PortFolio
+        isProfile={true}
+        settings={settings}
+        currentSlideIndex={currentSlideIndex}
+        handleDotClick={handleDotClick}
+        sliderRef={sliderRef} // 추가 전달
+      >
+        {data?.map((image: Data, index) => (
           <div
             className="slide"
             key={index}
@@ -95,21 +105,56 @@ function ProfileGallery() {
           >
             <img
               className={'profile-img'}
-              src={image.src}
-              alt={image.title}
+              src={image.url[0]}
+              alt={image.url[0]}
               style={{ cursor: 'pointer' }}
             />
           </div>
         ))}
       </PortFolio>
+
+      {/* 커스텀 도트 */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '20px',
+        }}
+      >
+        {Array.from({ length: dotCount })?.map((_, index) => (
+          <CustomDot
+            key={index}
+            isActive={
+              index === Math.floor(currentSlideIndex / settings.slidesToShow)
+            }
+            onClick={() => handleDotClick(index)} // 도트 클릭 시 해당 슬라이드로 이동
+          />
+        ))}
+      </div>
+
       <PortFolioModal
         isProfile={true}
         isOpen={isOpen}
         currentImage={currentImage}
         handleClose={handleClose}
       />
+      {isLoading && <Loading />}
     </div>
   );
 }
 
 export default ProfileGallery;
+const CustomDot = styled(Box)<{ isActive: boolean }>`
+  width: 7px;
+  height: 7px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: ${(props: { isActive: boolean }) =>
+    props.isActive ? '#404040' : '#bfbfbf'};
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: black;
+  }
+`;

@@ -11,25 +11,23 @@
   flex-direction: column; /* 기본적으로 수직 정렬 (모바일 기준) */
   align-items: center;
   justify-content: center;
-  gap: 20px; /* 이미지와 텍스트 간의 간격 */
   min-height: 500px; /* 슬라이드 최소 높이 */
-  padding: 20px;
+  /*padding: 20px;*/
   box-sizing: border-box;
 }
 
 /* 폴라로이드 래퍼 스타일 */
 .polaroid-wrapper {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 300px; /* 최대 이미지 너비 */
   margin-bottom: 20px;
-  height: auto;
 }
 
 /* 기본 폴라로이드 스타일 */
 .polaroid {
   position: absolute;
-  width: 60%;
+  width: 65%;
   aspect-ratio: 3 / 4;
   background: rgb(230, 230, 230);
   border: 10px solid white;
@@ -49,7 +47,7 @@
   transform: rotate(20deg);
   top: 15px;
   left: 100px;
-  z-index: 1000;
+  z-index: 10;
 }
 
 /* 텍스트 컨텐츠 스타일 */
@@ -126,7 +124,7 @@
 
   .text-content {
     max-width: 400px;
-    margin-top: 100px;
+    /*margin-top: 100px;*/
     margin-left: 650px;
     text-align: left; /* 텍스트 왼쪽 정렬 */
   }
@@ -136,10 +134,38 @@
   }
 
   .polaroid-wrapper {
+    margin-top: -400px;
     max-width: 300px; /* 데스크톱 이미지 크기 */
   }
 
   .text-content {
+    margin-left:250px;
+    margin-top: 0;
     max-width: 450px;
   }
+}
+/* 새로운 이미지가 들어올 때, 밑에서 위로 올라오는 애니메이션 */
+.slide-up-enter {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 500ms ease-out, opacity 500ms ease-out;
+  z-index: 101;
+}
+
+/* 나가는 이미지가 위로 나가는 애니메이션 */
+.slide-up-exit {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 100;
+}
+
+.slide-up-exit-active {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 500ms ease-in, opacity 500ms ease-in;
 }

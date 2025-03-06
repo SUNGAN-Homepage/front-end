@@ -22,7 +22,7 @@ export const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
           setIsVisible(false); // 화면에서 사라지면 false
         }
       },
-      { threshold: 0.3 }, // 너무 자주 실행되지 않도록 임계값을 조정
+      { threshold: 0.5 }, // 너무 자주 실행되지 않도록 임계값을 조정
     );
 
     if (ref.current) {
