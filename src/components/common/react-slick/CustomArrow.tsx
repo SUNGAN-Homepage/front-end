@@ -1,11 +1,9 @@
-import React from 'react';
-
 export const CustomPrevArrow = (props: React.ComponentProps<'div'>) => {
   const { className, onClick } = props;
   return (
     <div
       className={`${className} custom-arrow prev-arrow`}
-      onClick={onClick}
+      onClick={onClick} // 기존 onClick이 정상적으로 작동
       id={'PORTFOLIO'}
     >
       &#10094; {/* 왼쪽 화살표 */}

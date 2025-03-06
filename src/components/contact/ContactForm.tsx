@@ -11,10 +11,9 @@ import {
 } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import axios from 'axios';
+import { client } from '../../api/api.tsx';
 
 export default function ContactForm() {
-  const apiUrl = import.meta.env.VITE_APP_API_URL;
   const [name, setName] = useState<string>('');
   const [company, setCompany] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -40,7 +39,13 @@ export default function ContactForm() {
       alert('필수 사항을 입력해 주세요');
     } else {
       try {
-        await axios.post(`${apiUrl}/api/v1/contact/send`, data);
+        await client.post(`/api/v1/contact/send`, data);
+        setName('');
+        setCompany('');
+        setEmail('');
+        setPhone('');
+        setCategory('');
+        setText('');
       } catch (error) {
         console.error('Error fetching data:', error);
         alert('오류 발생');
@@ -146,7 +151,7 @@ export default function ContactForm() {
           }}
           onClick={handleSubmit}
         >
-          제출
+          전송
         </Button>
       </Box>
       <Divider

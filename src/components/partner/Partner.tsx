@@ -1,32 +1,42 @@
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Partner.css';
 
-import logo1 from '../../assets/logo1.png';
-import logo2 from '../../assets/logo2.png';
-import logo3 from '../../assets/logo3.png';
-import logo4 from '../../assets/logo4.png';
-import logo5 from '../../assets/logo5.png';
-import logo6 from '../../assets/logo6.png';
-import logo7 from '../../assets/logo7.png';
-import logo8 from '../../assets/logo8.png';
 import { Box } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
+import Loading from '../common/Loading/Loading.tsx';
+import { useQuery } from 'react-query';
+import { client } from '../../api/api.tsx';
 
-const partnerData = [
-  { id: 1, name: '파트너 1', logo: logo1, url: 'https://www.naver.com' },
-  { id: 2, name: '파트너 2', logo: logo2, url: 'https://www.daum.net' },
-  { id: 3, name: '파트너 3', logo: logo3, url: 'https://www.instagram.com' },
-  { id: 4, name: '파트너 4', logo: logo4, url: 'https://google.com' },
-  { id: 5, name: '파트너 5', logo: logo5, url: 'https://www.naver.com' },
-  { id: 6, name: '파트너 6', logo: logo6, url: 'https://www.naver.com' },
-  { id: 7, name: '파트너 7', logo: logo7, url: 'https://www.naver.com' },
-  { id: 8, name: '파트너 8', logo: logo8, url: 'https://www.naver.com' },
-];
+type Partner = {
+  partnerId: number;
+  url: string;
+  name: string;
+  address: string;
+};
 
 function Partner() {
+  const sliderRef = useRef<Slider | null>(null); // sliderRef로 슬라이더 컴포넌트를 참조
+
+  const { data, isLoading } = useQuery<Partner[] | null>(
+    'PartnerData', // query key
+    async () => {
+      const response = await client.get('/api/v1/partner');
+      return response.data; // 데이터를 반환
+    },
+    {
+      onError: (error) => {
+        console.error(error);
+        alert('에러가 발생했습니다.');
+      },
+      onSuccess: (data) => {
+        console.log('데이터를 성공적으로 가져왔습니다.', data);
+      },
+    },
+  );
+  console.log(data);
   const settings = {
     dots: true,
     infinite: true,
@@ -62,7 +72,7 @@ function Partner() {
           marginLeft: '-20px',
         }}
       >
-        <ul style={{ margin: '0px' }}> {dots} </ul>
+        <ul style={{ margin: '0px' }}>{dots}</ul>
       </Box>
     ),
   };
@@ -71,9 +81,9 @@ function Partner() {
     <AnimatedComponent id={'partner'}>
       <section className="partner">
         <h2 className="partner-title">PARTNER</h2>
-        <Slider {...settings}>
-          {partnerData.map((partner) => (
-            <div className="partner-item" key={partner.id}>
+        <Slider {...settings} ref={sliderRef}>
+          {data?.map((partner) => (
+            <div className="partner-item" key={partner.partnerId}>
               <a
                 href={partner.url}
                 target="_blank"
@@ -83,13 +93,16 @@ function Partner() {
                   window.open(partner.url, '_blank', 'width=1200,height=800');
                 }}
               >
-                <img src={partner.logo} alt={partner.name} />
+                <img src={partner.url} alt={partner.url} />
               </a>
             </div>
           ))}
         </Slider>
       </section>
+
+      {isLoading && <Loading />}
     </AnimatedComponent>
   );
 }
+
 export default Partner;

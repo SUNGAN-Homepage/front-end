@@ -23,7 +23,7 @@
     opacity: 1;
 }
 
-.modal-content profile-img {
+.modal-content .profile-img {
     width: 100%;
     height: 80%;
     margin-top: 20px;
@@ -32,7 +32,7 @@
 
 }
 
-.slide profile-img {
+.slide .profile-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -42,7 +42,7 @@
     object-fit: cover; /* 이미지 비율 유지 및 슬라이더 채우기 */
     transition: transform 0.2s ease; /* 이미지 확대 전환 효과 */
 }
-.slide:hover profile-img {
+.slide:hover .profile-img {
     transform: scale(1.1); /* 이미지 약간 더 확대 */
 
 }

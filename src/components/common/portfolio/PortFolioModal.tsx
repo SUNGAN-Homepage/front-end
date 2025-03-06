@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import image1 from '../../../assets/portfolio1_1.jpg';
-import image2 from '../../../assets/portfolio1_2.jpg';
-import image3 from '../../../assets/portfolio1_3.jpg';
 import { Box, Typography } from '@mui/material';
 import { Close } from '@mui/icons-material';
 
 interface PortfolioModalProps {
   isOpen: boolean;
   currentImage: {
-    src: string;
-    title: string;
     date: string;
+    description: string;
+    portfolioId: number;
+    title: string;
+    url: string[];
   } | null;
   handleClose: () => void;
   isProfile?: boolean;
@@ -22,15 +20,13 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
   handleClose,
   isProfile,
 }) => {
-  const [imgArr, setImgArr] = useState<string[]>([]);
-  useEffect(() => {
-    if (isOpen && currentImage) {
-      //임시로 고정 이미지 배열 생성,백엔드 만들어지면 수정
-      const defaultImage = currentImage.src;
-      setImgArr([defaultImage, image1, image2, image3]);
-    }
-  }, [isOpen, currentImage]);
-
+  const changeDateType = (data: string) => {
+    return new Date(data).toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+  };
   return (
     <>
       {isOpen && currentImage && (
@@ -84,7 +80,7 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
                   borderBottom: '1px solid #eeeeee',
                 }}
               >
-                촬영일시 : {currentImage.date}
+                촬영일시 : {changeDateType(currentImage.date)}
               </Typography>
               {!isProfile && (
                 <Typography
@@ -94,7 +90,7 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
                     borderBottom: '1px solid #eeeeee',
                   }}
                 >
-                  행사장소 : 연암공과대학교 산학 협력단
+                  행사장소 :{currentImage.description}
                 </Typography>
               )}
             </Box>
@@ -103,34 +99,17 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
                 justifyContent: 'center',
               }}
             >
-              {isProfile ? (
-                <>
+              {currentImage.url.map((image: string, index: number) => (
+                <Box key={index} sx={{ cursor: 'pointer' }}>
                   <img
-                    src={imgArr[0]}
-                    alt={`img`}
+                    src={image}
                     style={{
-                      height: '100vh',
-                      background: 'white',
-                      // width: '100vw',
-                      // width: '100%',
+                      width: '100%',
                     }}
+                    alt={image}
                   />
-                </>
-              ) : (
-                <>
-                  {imgArr.map((image, index) => (
-                    <Box key={index} sx={{ cursor: 'pointer' }}>
-                      <img
-                        src={image}
-                        alt={`Slide ${index}`}
-                        style={{
-                          width: '100%',
-                        }}
-                      />
-                    </Box>
-                  ))}
-                </>
-              )}
+                </Box>
+              ))}
             </Box>
           </Box>
         </div>
