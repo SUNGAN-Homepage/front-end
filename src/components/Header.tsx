@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import IconButton from '@mui/material/IconButton';
-import LOGO from '../assets/LOGO.jpg';
+import LOGO from '../assets/LOGO.webp';
 import { useEffect, useState } from 'react';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({

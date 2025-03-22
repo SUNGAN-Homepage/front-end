@@ -1,10 +1,10 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './DetailIntro.css';
-import DetailIntro1 from '../../assets/DetailIntro1.jpg';
-import DetailIntro2 from '../../assets/DetailIntro2.jpg';
-import DetailIntro3 from '../../assets/DetailIntro3.jpg';
-import DetailIntro4 from '../../assets/DetailIntro4.png';
+import DetailIntro1 from '../../assets/DetailIntro1.webp';
+import DetailIntro2 from '../../assets/DetailIntro2.webp';
+import DetailIntro3 from '../../assets/DetailIntro3.webp';
+import DetailIntro4 from '../../assets/DetailIntro4.webp';
 
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 import { useEffect, useState } from 'react';
