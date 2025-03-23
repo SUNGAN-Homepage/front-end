@@ -7,12 +7,13 @@ import DetailIntro3 from '../../assets/DetailIntro3.webp';
 import DetailIntro4 from '../../assets/DetailIntro4.webp';
 
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function DetailIntro() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [DetailIntro2, DetailIntro1, DetailIntro3, DetailIntro4];
+  const nodeRef = useRef(null); // nodeRef 생성
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -29,11 +30,14 @@ function DetailIntro() {
           <div className="polaroid-wrapper">
             <TransitionGroup>
               <CSSTransition
+                nodeRef={nodeRef} // nodeRef 전달
                 key={currentImage}
                 timeout={1000}
                 classNames="slide-up"
               >
-                <div className="polaroid">
+                <div ref={nodeRef} className="polaroid">
+                  {' '}
+                  {/* ref 설정 */}
                   <img src={images[currentImage]} alt="소개 이미지" />
                 </div>
               </CSSTransition>
