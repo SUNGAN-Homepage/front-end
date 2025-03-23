@@ -199,16 +199,18 @@ export default function Header() {
               flexShrink: 0,
             }}
           >
-            <IconButton sx={{ marginLeft: 'auto', marginTop: '5px' }}>
-              <InstagramIcon
-                onClick={() =>
-                  window.open(
-                    'https://www.instagram.com/sungan__studio/',
-                    '_blank',
-                    'noopener,noreferrer',
-                  )
-                }
-              />
+            <IconButton
+              sx={{ marginLeft: 'auto', marginTop: '5px' }}
+              aria-label={'instagram'}
+              onClick={() =>
+                window.open(
+                  'https://www.instagram.com/sungan__studio/',
+                  '_blank',
+                  'noopener,noreferrer',
+                )
+              }
+            >
+              <InstagramIcon />
             </IconButton>
           </Box>
         </StyledToolbar>
