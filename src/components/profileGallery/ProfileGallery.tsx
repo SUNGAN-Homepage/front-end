@@ -68,7 +68,7 @@ function ProfileGallery() {
 
     return {
       dots: false, // 기본 도트 표시
-      infinite: true,
+      infinite: false,
       speed: 500,
       // centerMode: !(isMobile || isSmallMobile),
       lazyLoad: true,
@@ -123,10 +123,13 @@ function ProfileGallery() {
       >
         {Array.from({ length: dotCount })?.map((_, index) => (
           <CustomDot
+            sx={{
+              backgroundColor:
+                index === Math.floor(currentSlideIndex / settings.slidesToShow)
+                  ? '#404040'
+                  : '#bfbfbf',
+            }}
             key={index}
-            isActive={
-              index === Math.floor(currentSlideIndex / settings.slidesToShow)
-            }
             onClick={() => handleDotClick(index)} // 도트 클릭 시 해당 슬라이드로 이동
           />
         ))}
@@ -144,16 +147,13 @@ function ProfileGallery() {
 }
 
 export default ProfileGallery;
-const CustomDot = styled(Box)<{ isActive: boolean }>`
+const CustomDot = styled(Box)`
   width: 7px;
   height: 7px;
   margin: 0 5px;
   border-radius: 50%;
-  background-color: ${(props: { isActive: boolean }) =>
-    props.isActive ? '#404040' : '#bfbfbf'};
   cursor: pointer;
   transition: background-color 0.3s;
-
   &:hover {
     background-color: black;
   }

@@ -39,7 +39,7 @@ function Partner() {
   console.log(data);
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 2000,
     slidesToShow: 4,
     rows: 1,
