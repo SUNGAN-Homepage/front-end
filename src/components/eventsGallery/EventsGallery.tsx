@@ -44,10 +44,6 @@ function EventsGallery() {
         console.error(error);
         alert('에러가 발생했습니다.');
       },
-      onSuccess: (data) => {
-        // 데이터를 성공적으로 가져온 후에 호출되는 함수
-        console.log('데이터를 성공적으로 가져왔습니다.', data);
-      },
     },
   );
 
@@ -91,12 +87,6 @@ function EventsGallery() {
     };
   }, [isMobile, isSmallMobile, isTablet]);
   const dotCount = Math.ceil((data?.length || 0) / settings.slidesToShow);
-  console.log(
-    'currentSlideIndex:',
-    currentSlideIndex,
-    'dotCount',
-    settings.slidesToShow,
-  );
 
   return (
     <div className={'events'}>
