@@ -124,16 +124,16 @@ export default function Header() {
                 flexShrink: 0,
               }}
             >
-              <IconButton>
-                <InstagramIcon
-                  onClick={() =>
-                    window.open(
-                      'https://www.instagram.com/sungan__studio/',
-                      '_blank',
-                      'noopener,noreferrer',
-                    )
-                  }
-                />
+              <IconButton
+                onClick={() =>
+                  window.open(
+                    'https://www.instagram.com/sungan__studio/',
+                    '_blank',
+                    'noopener,noreferrer',
+                  )
+                }
+              >
+                <InstagramIcon />
               </IconButton>
             </Box>
           </Box>

@@ -31,15 +31,11 @@ function Partner() {
         console.error(error);
         alert('에러가 발생했습니다.');
       },
-      onSuccess: (data) => {
-        console.log('데이터를 성공적으로 가져왔습니다.', data);
-      },
     },
   );
-  console.log(data);
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 2000,
     slidesToShow: 4,
     rows: 1,

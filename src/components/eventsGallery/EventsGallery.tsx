@@ -44,10 +44,6 @@ function EventsGallery() {
         console.error(error);
         alert('에러가 발생했습니다.');
       },
-      onSuccess: (data) => {
-        // 데이터를 성공적으로 가져온 후에 호출되는 함수
-        console.log('데이터를 성공적으로 가져왔습니다.', data);
-      },
     },
   );
 
@@ -74,7 +70,7 @@ function EventsGallery() {
     return {
       dots: false,
       lazyLoad: true,
-      infinite: true,
+      infinite: false,
       speed: 500,
       slidesToShow: slideToShow,
       slidesToScroll: slideToShow,
@@ -91,12 +87,6 @@ function EventsGallery() {
     };
   }, [isMobile, isSmallMobile, isTablet]);
   const dotCount = Math.ceil((data?.length || 0) / settings.slidesToShow);
-  console.log(
-    'currentSlideIndex:',
-    currentSlideIndex,
-    'dotCount',
-    settings.slidesToShow,
-  );
 
   return (
     <div className={'events'}>
@@ -138,9 +128,12 @@ function EventsGallery() {
         {Array.from({ length: dotCount })?.map((_, index) => (
           <CustomDot
             key={index}
-            isActive={
-              index === Math.floor(currentSlideIndex / settings.slidesToShow)
-            }
+            sx={{
+              backgroundColor:
+                index === Math.floor(currentSlideIndex / settings.slidesToShow)
+                  ? '#404040'
+                  : '#bfbfbf',
+            }}
             onClick={() => handleDotClick(index)} // 도트 클릭 시 해당 슬라이드로 이동
           />
         ))}
@@ -156,16 +149,13 @@ function EventsGallery() {
 }
 
 export default EventsGallery;
-const CustomDot = styled(Box)<{ isActive: boolean }>`
+const CustomDot = styled(Box)`
   width: 7px;
   height: 7px;
   margin: 0 5px;
   border-radius: 50%;
-  background-color: ${(props: { isActive: boolean }) =>
-    props.isActive ? '#404040' : '#bfbfbf'};
   cursor: pointer;
   transition: background-color 0.3s;
-
   &:hover {
     background-color: black;
   }
