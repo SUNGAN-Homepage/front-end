@@ -15,6 +15,8 @@ import { useQuery } from 'react-query';
 import Loading from '../common/Loading/Loading.tsx';
 import { styled } from '@mui/material/styles';
 import Slider from 'react-slick';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 type Business = {
   portfolioId: number;
@@ -104,7 +106,7 @@ function EventsGallery() {
               key={index}
               onClick={() => handleImageClick(image)}
             >
-              <img
+              <LazyLoadImage
                 className={'events-img'}
                 src={image.url[0]}
                 alt={image.title}

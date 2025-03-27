@@ -14,6 +14,8 @@ import { useQuery } from 'react-query';
 import { client } from '../../api/api.tsx';
 import Slider from 'react-slick';
 import { styled } from '@mui/material/styles'; // react-slick import
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 interface Data {
   date: string;
@@ -103,7 +105,7 @@ function ProfileGallery() {
             key={index}
             onClick={() => handleImageClick(image)}
           >
-            <img
+            <LazyLoadImage
               className={'profile-img'}
               src={image.url[0]}
               alt={image.url[0]}

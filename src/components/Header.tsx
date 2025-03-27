@@ -7,6 +7,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import IconButton from '@mui/material/IconButton';
 import LOGO from '../assets/LOGO.webp';
 import { useEffect, useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -109,7 +111,7 @@ export default function Header() {
           >
             {/* 로고 */}
             <Box sx={{ cursor: 'pointer', marginTop: '5px' }}>
-              <img
+              <LazyLoadImage
                 src={LOGO}
                 alt="로고"
                 width="180px"

@@ -3,7 +3,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Partner.css';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Box } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 import Loading from '../common/Loading/Loading.tsx';
@@ -80,7 +81,7 @@ function Partner() {
         <Slider {...settings} ref={sliderRef}>
           {data?.map((partner) => (
             <div className="partner-item" key={partner.partnerId}>
-              <img
+              <LazyLoadImage
                 src={partner.url}
                 alt={partner.url}
                 onClick={(e) => {

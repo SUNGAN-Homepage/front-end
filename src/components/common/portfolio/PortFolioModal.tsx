@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 interface PortfolioModalProps {
   isOpen: boolean;
@@ -101,7 +103,7 @@ const PortFolioModal: React.FC<PortfolioModalProps> = ({
             >
               {currentImage.url.map((image: string, index: number) => (
                 <Box key={index} sx={{ cursor: 'pointer' }}>
-                  <img
+                  <LazyLoadImage
                     src={image}
                     style={{
                       width: '100%',
