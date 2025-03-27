@@ -9,8 +9,6 @@ import DetailIntro4 from '../../assets/DetailIntro4.webp';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 import React, { useEffect, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function DetailIntro() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -37,12 +35,12 @@ function DetailIntro() {
                 classNames="slide-up"
               >
                 <div ref={nodeRefs.current[currentImage]} className="polaroid">
-                  <LazyLoadImage src={images[currentImage]} alt="소개 이미지" />
+                  <img src={images[currentImage]} alt="소개 이미지" />
                 </div>
               </CSSTransition>
             </TransitionGroup>
             <div className="polaroid rotated">
-              <LazyLoadImage
+              <img
                 src={images[(currentImage + 1) % images.length]}
                 alt="소개 이미지"
               />
