@@ -80,17 +80,15 @@ function Partner() {
         <Slider {...settings} ref={sliderRef}>
           {data?.map((partner) => (
             <div className="partner-item" key={partner.partnerId}>
-              <a
-                href={partner.url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <img
+                src={partner.url}
+                alt={partner.url}
                 onClick={(e) => {
                   e.preventDefault();
                   window.open(partner.url, '_blank', 'width=1200,height=800');
                 }}
-              >
-                <img src={partner.url} alt={partner.url} />
-              </a>
+                style={{ cursor: 'pointer' }}
+              />
             </div>
           ))}
         </Slider>

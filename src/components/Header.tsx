@@ -202,6 +202,7 @@ export default function Header() {
           >
             <IconButton
               sx={{ marginLeft: 'auto', marginTop: '5px' }}
+              aria-label={'instagram'}
               onClick={() =>
                 window.open(
                   'https://www.instagram.com/sungan__studio/',

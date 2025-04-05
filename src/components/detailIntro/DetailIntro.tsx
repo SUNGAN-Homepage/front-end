@@ -7,13 +7,13 @@ import DetailIntro3 from '../../assets/DetailIntro3.webp';
 import DetailIntro4 from '../../assets/DetailIntro4.webp';
 
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function DetailIntro() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [DetailIntro2, DetailIntro1, DetailIntro3, DetailIntro4];
-  const nodeRef = useRef(null); // nodeRef 생성
+  const nodeRefs = useRef(images.map(() => React.createRef<HTMLDivElement>()));
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -25,19 +25,16 @@ function DetailIntro() {
   return (
     <AnimatedComponent id={'info'}>
       <section className="detail-intro" style={{ overflow: 'hidden' }}>
-        {/* 슬라이드 1 */}
         <div className="slide-content">
           <div className="polaroid-wrapper">
             <TransitionGroup>
               <CSSTransition
-                nodeRef={nodeRef} // nodeRef 전달
+                nodeRef={nodeRefs.current[currentImage]} // 변경된 ref 사용
                 key={currentImage}
                 timeout={1000}
                 classNames="slide-up"
               >
-                <div ref={nodeRef} className="polaroid">
-                  {' '}
-                  {/* ref 설정 */}
+                <div ref={nodeRefs.current[currentImage]} className="polaroid">
                   <img src={images[currentImage]} alt="소개 이미지" />
                 </div>
               </CSSTransition>
