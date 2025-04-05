@@ -1,14 +1,18 @@
 import { Box, Button, Typography } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
+import urlIntroImg from '../../assets/Intro.jpg';
 
 function Intro() {
   return (
-    //추후 이미지로 대체
     <AnimatedComponent id="home">
       <Box
         sx={{
           background: 'gray',
           mt: { xs: 5, sm: '0' },
+          backgroundImage: `url(${urlIntroImg})`,
+          backgroundSize: 'cover',
+          height: '650px',
+          backgroundPosition: 'center bottom', // 아래쪽을 더 보이게
         }}
       >
         <Box
@@ -18,10 +22,25 @@ function Intro() {
             padding: 4,
           }}
         >
-          <Typography variant="h3" marginBottom={3} marginTop={10}>
+          <Typography
+            variant="h3"
+            marginBottom={3}
+            marginTop={10}
+            sx={{
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
+            }}
+          >
             지역 축제 및 행사 아카이빙 플랫폼
           </Typography>
-          <Typography variant="h4" marginBottom={10}>
+          <Typography
+            variant="h4"
+            marginBottom={10}
+            sx={{
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', // 그림자처럼 외곽선
+            }}
+          >
             지역 축제 및 행사 기록을 남기는 아카이빙 플랫폼입니다.
           </Typography>
 
@@ -33,10 +52,10 @@ function Intro() {
               color: 'black',
               marginBottom: 5,
 
-              transition: 'transform 0.3s ease', // 애니메이션 효과 추가
+              transition: 'transform 0.3s ease',
               '&:hover': {
-                transform: 'scale(1.1)', // 호버 시 크기 확대
-                background: '#f5f5f5', // 호버 시 배경색 변경
+                transform: 'scale(1.1)',
+                background: '#f5f5f5',
               },
             }}
             onClick={() =>
