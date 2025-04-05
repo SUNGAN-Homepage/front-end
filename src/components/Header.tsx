@@ -146,7 +146,7 @@ export default function Header() {
               justifyContent: { xs: 'space-around', sm: 'start' },
               width: '100%',
               mt: 1,
-              justifyContent: { xs: 'space-between', sm: 'flex-start' },
+              // justifyContent: { xs: 'space-between', sm: 'flex-start' },
             }}
           >
             {pages.map((page) => (
