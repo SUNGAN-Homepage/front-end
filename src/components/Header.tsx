@@ -145,7 +145,7 @@ export default function Header() {
               gap: { xs: 2, sm: 3 }, // 메뉴 간 간격
               width: '100%',
               mt: 1,
-              justifyContent: { xs: 'space-between', sm: 'flex-start' },
+              // justifyContent: { xs: 'space-between', sm: 'flex-start' },
             }}
           >
             {pages.map((page) => (
