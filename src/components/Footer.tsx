@@ -28,7 +28,7 @@ function Footer() {
           전화: 최지호, 010-2506-4076
         </Typography>
         <Typography sx={{ color: 'white', fontSize: { sm: '20px' } }}>
-          이메일: honggildong@gmail.com
+          이메일: dj7013@naver.com
         </Typography>
         <Typography sx={{ color: 'white', fontSize: { sm: '20px' } }}>
           위치: 경남 진주시 대신로 365 지하건물 1층

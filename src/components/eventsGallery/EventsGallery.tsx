@@ -32,7 +32,7 @@ function EventsGallery() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); // 현재 슬라이드 인덱스를 추적
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState<Business | null>(null);
-  const { data, isLoading } = useQuery<Business[]>(
+  const { data=[], isLoading } = useQuery<Business[]>(
     'eventData', // query key
     async () => {
       const response = await client.get('/api/v1/portfolio?type=event');
