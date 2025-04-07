@@ -20,7 +20,7 @@ type Partner = {
 function Partner() {
   const sliderRef = useRef<Slider | null>(null); // sliderRef로 슬라이더 컴포넌트를 참조
 
-  const { data, isLoading } = useQuery<Partner[] | null>(
+  const { data=[], isLoading } = useQuery<Partner[] >(
     'PartnerData', // query key
     async () => {
       const response = await client.get('/api/v1/partner');
@@ -93,7 +93,6 @@ function Partner() {
           ))}
         </Slider>
       </section>
-
       {isLoading && <Loading />}
     </AnimatedComponent>
   );
