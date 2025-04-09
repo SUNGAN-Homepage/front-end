@@ -60,7 +60,7 @@ function Intro() {
             }}
             onClick={() =>
               window.open(
-                'https://booking.naver.com/booking/6/bizes/665865/items/4352330?startDate=2025-02-05',
+                'https://booking.naver.com/booking/13/bizes/1269774?theme=place&entry=pll&lang=ko&area=pll',
                 '_blank',
                 'noopener,noreferrer',
               )
