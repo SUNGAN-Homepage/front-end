@@ -12,7 +12,7 @@ function Intro() {
           backgroundImage: `url(${urlIntroImg})`,
           backgroundSize: 'cover',
           height: '650px',
-          backgroundPosition: 'center bottom', // 아래쪽을 더 보이게
+          backgroundPosition: 'center bottom',
         }}
       >
         <Box
@@ -25,20 +25,28 @@ function Intro() {
           <Typography
             variant="h3"
             marginBottom={3}
-            marginTop={10}
+            marginTop={{ xs: 8, sm: 10 }}
             sx={{
               color: 'white',
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
+              fontFamily: 'Pretendard, sans-serif',
+              fontWeight: 600,
+              textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)',
+              wordBreak: 'keep-all', // 단어 기준 줄바꿈 (중간에 안 끊김)
+              overflowWrap: 'break-word', // 필요시 줄바꿈 허용
             }}
           >
             지역 축제 및 행사 아카이빙 플랫폼
           </Typography>
           <Typography
-            variant="h4"
+            variant="h5"
             marginBottom={10}
             sx={{
               color: 'white',
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)', // 그림자처럼 외곽선
+              fontFamily: ' Pretendard, sans-serif',
+              fontWeight: 500,
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
+              wordBreak: 'keep-all', // 단어 기준 줄바꿈 (중간에 안 끊김)
+              overflowWrap: 'break-word', // 필요시 줄바꿈 허용
             }}
           >
             지역 축제 및 행사 기록을 남기는 아카이빙 플랫폼입니다.
@@ -50,8 +58,9 @@ function Intro() {
               width: '150px',
               background: 'white',
               color: 'black',
+              fontWeight: 600,
+              fontFamily: 'Pretendard, sans-serif',
               marginBottom: 5,
-
               transition: 'transform 0.3s ease',
               '&:hover': {
                 transform: 'scale(1.1)',
