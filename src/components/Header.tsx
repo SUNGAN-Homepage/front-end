@@ -5,7 +5,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import IconButton from '@mui/material/IconButton';
-import LOGO from '../assets/LOGO.webp';
 import { useEffect, useState } from 'react';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -110,7 +109,7 @@ export default function Header() {
             {/* 로고 */}
             <Box sx={{ cursor: 'pointer', marginTop: '5px' }}>
               <img
-                src={LOGO}
+                src={'../assets/LOGO.webp'}
                 alt="로고"
                 width="180px"
                 style={{ marginRight: '10px' }}
@@ -125,6 +124,7 @@ export default function Header() {
               }}
             >
               <IconButton
+                aria-label="인스타그램으로 이동"
                 onClick={() =>
                   window.open(
                     'https://www.instagram.com/sungan__studio/',
@@ -146,7 +146,6 @@ export default function Header() {
               justifyContent: { xs: 'space-around', sm: 'start' },
               width: '100%',
               mt: 1,
-              // justifyContent: { xs: 'space-between', sm: 'flex-start' },
             }}
           >
             {pages.map((page) => (

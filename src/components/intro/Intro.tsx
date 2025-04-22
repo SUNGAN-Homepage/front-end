@@ -1,6 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
-import urlIntroImg from '../../assets/Intro.jpg';
 
 function Intro() {
   return (
@@ -9,7 +8,7 @@ function Intro() {
         sx={{
           background: 'gray',
           mt: { xs: 5, sm: '0' },
-          backgroundImage: `url(${urlIntroImg})`,
+          backgroundImage: `url(${'/assets/Intro.webp'})`,
           backgroundSize: 'cover',
           height: '650px',
           backgroundPosition: 'center bottom',
