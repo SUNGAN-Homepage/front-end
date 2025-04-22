@@ -1,10 +1,6 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './DetailIntro.css';
-import DetailIntro1 from '../../assets/DetailIntro1.webp';
-import DetailIntro2 from '../../assets/DetailIntro2.webp';
-import DetailIntro3 from '../../assets/DetailIntro3.webp';
-import DetailIntro4 from '../../assets/DetailIntro4.webp';
 
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
 import React, { useEffect, useRef, useState } from 'react';
@@ -12,7 +8,12 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function DetailIntro() {
   const [currentImage, setCurrentImage] = useState(0);
-  const images = [DetailIntro2, DetailIntro1, DetailIntro3, DetailIntro4];
+  const images = [
+    '/assets/DetailIntro2.webp',
+    '/assets/DetailIntro1.webp',
+    '/assets/DetailIntro3.webp',
+    '/assets/DetailIntro4.webp',
+  ];
   const nodeRefs = useRef(images.map(() => React.createRef<HTMLDivElement>()));
 
   useEffect(() => {
