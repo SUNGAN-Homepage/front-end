@@ -22,15 +22,7 @@ function DetailIntro() {
     }, 5000);
     return () => clearInterval(intervalId);
   }, [images.length]);
-  useEffect(() => {
-    const preloadImage = (src: string) => {
-      const img = new Image();
-      img.src = src;
-    };
 
-    // 현재는 보여지지 않지만 곧 필요할 이미지만 preload
-    preloadImage(images[(currentImage + 2) % images.length]);
-  }, [currentImage]);
   return (
     <AnimatedComponent id={'info'}>
       <section className="detail-intro" style={{ overflow: 'hidden' }}>
