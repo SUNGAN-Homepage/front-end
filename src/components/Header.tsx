@@ -109,9 +109,11 @@ export default function Header() {
             {/* 로고 */}
             <Box sx={{ cursor: 'pointer', marginTop: '5px' }}>
               <img
-                src={'/assets/LOGO.webp'}
+                src={'../assets/LOGO.webp'}
                 alt="로고"
                 width="180"
+                height="42"
+                fetchPriority="high"
                 style={{ marginRight: '10px' }}
               />
             </Box>
