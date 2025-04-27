@@ -9,10 +9,10 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 function DetailIntro() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [
-    '/assets/DetailIntro2.webp',
-    '/assets/DetailIntro1.webp',
-    '/assets/DetailIntro3.webp',
-    '/assets/DetailIntro4.webp',
+    '/assets/DetailIntro/DetailIntro2.jpg',
+    '/assets/DetailIntro/DetailIntro1.jpg',
+    '/assets/DetailIntro/DetailIntro3.jpg',
+    '/assets/DetailIntro/DetailIntro4.jpg',
   ];
   const nodeRefs = useRef(images.map(() => React.createRef<HTMLDivElement>()));
 
@@ -56,12 +56,11 @@ function DetailIntro() {
             </div>
           </div>
           <div className="text-content">
-            <h2>순간, 스튜디오</h2>
+            <h2>OO, 스튜디오</h2>
             <p>
-              <strong>순간, 스튜디오</strong>는 경남 진주시 대신로 365 지하
-              1층에 위치해 있습니다. 증명사진, 여권사진, 프로필 촬영을 전문으로
-              하며, 지역 축제 및 기업과 단체의 행사 촬영도 함께 진행하고
-              있습니다.
+              <strong>OO, 스튜디오</strong>는 경남 진주시 OOO 1층에 위치해
+              있습니다. 증명사진, 여권사진, 프로필 촬영을 전문으로 하며, 지역
+              축제 및 기업과 단체의 행사 촬영도 함께 진행하고 있습니다.
             </p>
           </div>
         </div>

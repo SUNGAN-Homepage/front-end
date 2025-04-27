@@ -9,11 +9,9 @@ import {
   CustomPrevArrow,
 } from '../common/react-slick/CustomArrow.tsx';
 import PortFolioModal from '../common/portfolio/PortFolioModal.tsx';
-import Loading from '../common/Loading/Loading.tsx';
-import { useQuery } from 'react-query';
-import { client } from '../../api/api.tsx';
 import Slider from 'react-slick';
-import { styled } from '@mui/material/styles'; // react-slick import
+import { styled } from '@mui/material/styles';
+import { profileDummy } from '../../DummyData/DummyData.tsx'; // react-slick import
 
 interface Data {
   date: string;
@@ -31,20 +29,20 @@ function ProfileGallery() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); // 현재 슬라이드 인덱스를 추적
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState<Data | null>(null);
-
-  const { data, isLoading } = useQuery<Data[]>(
-    'profileData', // query key
-    async () => {
-      const response = await client.get('/api/v1/portfolio?type=profile');
-      return response.data; // 데이터를 반환
-    },
-    {
-      onError: (error) => {
-        console.error(error);
-        alert('에러가 발생했습니다.');
-      },
-    },
-  );
+  const data: Data[] = profileDummy;
+  // const { data, isLoading } = useQuery<Data[]>(
+  //   'profileData', // query key
+  //   async () => {
+  //     const response = await client.get('/api/v1/portfolio?type=profile');
+  //     return response.data; // 데이터를 반환
+  //   },
+  //   {
+  //     onError: (error) => {
+  //       console.error(error);
+  //       alert('에러가 발생했습니다.');
+  //     },
+  //   },
+  // );
 
   const handleImageClick = (image: Data) => {
     setCurrentImage(image);
@@ -141,7 +139,7 @@ function ProfileGallery() {
         currentImage={currentImage}
         handleClose={handleClose}
       />
-      {isLoading && <Loading />}
+      {/*{isLoading && <Loading />}*/}
     </div>
   );
 }

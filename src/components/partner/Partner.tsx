@@ -6,9 +6,7 @@ import './Partner.css';
 
 import { Box } from '@mui/material';
 import { AnimatedComponent } from '../common/AnimatedComponent.tsx';
-import Loading from '../common/Loading/Loading.tsx';
-import { useQuery } from 'react-query';
-import { client } from '../../api/api.tsx';
+import { partnersDummy } from '../../DummyData/DummyData.tsx';
 
 type Partner = {
   partnerId: number;
@@ -19,23 +17,23 @@ type Partner = {
 
 function Partner() {
   const sliderRef = useRef<Slider | null>(null); // sliderRef로 슬라이더 컴포넌트를 참조
-
-  const { data=[], isLoading } = useQuery<Partner[] >(
-    'PartnerData', // query key
-    async () => {
-      const response = await client.get('/api/v1/partner');
-      return response.data; // 데이터를 반환
-    },
-    {
-      onError: (error) => {
-        console.error(error);
-        alert('에러가 발생했습니다.');
-      },
-    },
-  );
+  const data: Partner[] = partnersDummy;
+  // const { data=[], isLoading } = useQuery<Partner[] >(
+  //   'PartnerData', // query key
+  //   async () => {
+  //     const response = await client.get('/api/v1/partner');
+  //     return response.data; // 데이터를 반환
+  //   },
+  //   {
+  //     onError: (error) => {
+  //       console.error(error);
+  //       alert('에러가 발생했습니다.');
+  //     },
+  //   },
+  // );
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 2000,
     slidesToShow: 4,
     rows: 1,
@@ -82,18 +80,25 @@ function Partner() {
             <div className="partner-item" key={partner.partnerId}>
               <img
                 src={partner.url}
-                alt={partner.url}
+                alt={partner.name}
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open(partner.url, '_blank', 'width=1200,height=800');
+                  window.open(
+                    partner.address,
+                    '_blank',
+                    'width=1200,height=800',
+                  );
                 }}
-                style={{ cursor: 'pointer' }}
+                style={{
+                  cursor: 'pointer',
+                  margin: '0 auto',
+                }}
               />
             </div>
           ))}
         </Slider>
       </section>
-      {isLoading && <Loading />}
+      {/*{isLoading && <Loading />}*/}
     </AnimatedComponent>
   );
 }

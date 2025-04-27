@@ -8,7 +8,7 @@ function Intro() {
         sx={{
           background: 'gray',
           mt: { xs: 5, sm: '0' },
-          backgroundImage: `url(${'/assets/Intro.webp'})`,
+          backgroundImage: `url(${'/assets/Intro.jpg'})`,
           backgroundSize: 'cover',
           height: '650px',
           backgroundPosition: 'center bottom',
@@ -68,7 +68,7 @@ function Intro() {
             }}
             onClick={() =>
               window.open(
-                'https://booking.naver.com/booking/13/bizes/1269774?theme=place&entry=pll&lang=ko&area=pll',
+                'https://booking.naver.com/booking/',
                 '_blank',
                 'noopener,noreferrer',
               )

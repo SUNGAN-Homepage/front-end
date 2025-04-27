@@ -10,11 +10,9 @@ import { PortFolio } from '../common/portfolio/PortFolio.tsx';
 import './EventsGallery.css';
 import PortFolioModal from '../common/portfolio/PortFolioModal.tsx';
 import { useMemo, useRef, useState } from 'react';
-import { client } from '../../api/api.tsx';
-import { useQuery } from 'react-query';
-import Loading from '../common/Loading/Loading.tsx';
 import { styled } from '@mui/material/styles';
 import Slider from 'react-slick';
+import { businessesDummy } from '../../DummyData/DummyData.tsx';
 
 type Business = {
   portfolioId: number;
@@ -32,20 +30,21 @@ function EventsGallery() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); // 현재 슬라이드 인덱스를 추적
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState<Business | null>(null);
-  const { data=[], isLoading } = useQuery<Business[]>(
-    'eventData', // query key
-    async () => {
-      const response = await client.get('/api/v1/portfolio?type=event');
-      return response.data; // 데이터를 반환
-    },
+  const data: Business[] = businessesDummy;
 
-    {
-      onError: (error) => {
-        console.error(error);
-        alert('에러가 발생했습니다.');
-      },
-    },
-  );
+  // const { data=[], isLoading } = useQuery<Business[]>(
+  //   'eventData', // query key
+  //   async () => {
+  //     const response = await client.get('/api/v1/portfolio?type=event');
+  //     return response.data; // 데이터를 반환
+  //   },
+  //   {
+  //     onError: (error) => {
+  //       console.error(error);
+  //       alert('에러가 발생했습니다.');
+  //     },
+  //   },
+  // );
 
   const handleImageClick = (image: Business) => {
     setCurrentImage(image);
@@ -143,7 +142,7 @@ function EventsGallery() {
         currentImage={currentImage}
         handleClose={handleClose}
       />
-      {isLoading && <Loading />}
+      {/*{isLoading && <Loading />}*/}
     </div>
   );
 }

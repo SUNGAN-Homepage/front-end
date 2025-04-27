@@ -129,7 +129,7 @@ export default function Header() {
                 aria-label="인스타그램으로 이동"
                 onClick={() =>
                   window.open(
-                    'https://www.instagram.com/sungan__studio/',
+                    'https://www.instagram.com/',
                     '_blank',
                     'noopener,noreferrer',
                   )

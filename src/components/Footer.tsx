@@ -25,13 +25,13 @@ function Footer() {
         }}
       >
         <Typography sx={{ color: 'white', fontSize: { sm: '20px' } }}>
-          전화: 최지호, 010-2506-4076
+          전화: OOO, 010-1234-5678
         </Typography>
         <Typography sx={{ color: 'white', fontSize: { sm: '20px' } }}>
-          이메일: dj7013@naver.com
+          이메일: abc@example.com
         </Typography>
         <Typography sx={{ color: 'white', fontSize: { sm: '20px' } }}>
-          위치: 경남 진주시 대신로 365 지하건물 1층
+          위치: 경남 진주시 OOO OOO
         </Typography>
       </Box>
     </Box>
