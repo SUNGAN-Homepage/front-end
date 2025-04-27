@@ -65,28 +65,27 @@ function ProfileGallery() {
   };
   const settings = useMemo(() => {
     const slideToShow = isMobile || isSmallMobile ? 1 : isTablet ? 4 : 4;
-
     return {
-      dots: false, // 기본 도트 표시
+      dots: false,
+      lazyLoad: true,
       infinite: false,
       speed: 500,
-      // centerMode: !(isMobile || isSmallMobile),
-      lazyLoad: true,
       slidesToShow: slideToShow,
-      slidesToScroll: slideToShow,
+      slidesToScroll: 1,
       prevArrow: (
         <CustomPrevArrow onClick={() => sliderRef.current?.slickPrev()} />
-      ), // CustomPrevArrow 클릭 시 이전 슬라이드로 이동
+      ),
       nextArrow: (
         <CustomNextArrow onClick={() => sliderRef.current?.slickNext()} />
-      ), // CustomNextArrow 클릭 시 다음 슬라이드로 이동
+      ),
       accessibility: false,
       afterChange: (current: number) => {
-        setCurrentSlideIndex(current); // 슬라이드 변경 시 현재 슬라이드 인덱스 업데이트
+        setCurrentSlideIndex(current);
       },
     };
   }, [isMobile, isSmallMobile, isTablet]);
-  const dotCount = Math.ceil((data?.length || 0) / settings.slidesToShow);
+
+  const dotCount = Math.max((data?.length || 0) - settings.slidesToShow + 1);
 
   return (
     <div className="profile">
