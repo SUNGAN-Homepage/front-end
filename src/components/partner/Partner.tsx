@@ -20,7 +20,7 @@ type Partner = {
 function Partner() {
   const sliderRef = useRef<Slider | null>(null); // sliderRef로 슬라이더 컴포넌트를 참조
 
-  const { data=[], isLoading } = useQuery<Partner[] >(
+  const { data = [], isLoading } = useQuery<Partner[]>(
     'PartnerData', // query key
     async () => {
       const response = await client.get('/api/v1/partner');
@@ -82,12 +82,19 @@ function Partner() {
             <div className="partner-item" key={partner.partnerId}>
               <img
                 src={partner.url}
-                alt={partner.url}
+                alt={partner.name}
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open(partner.url, '_blank', 'width=1200,height=800');
+                  window.open(
+                    partner.address,
+                    '_blank',
+                    'width=1200,height=800',
+                  );
                 }}
-                style={{ cursor: 'pointer' }}
+                style={{
+                  cursor: 'pointer',
+                  margin: '0 auto',
+                }}
               />
             </div>
           ))}
