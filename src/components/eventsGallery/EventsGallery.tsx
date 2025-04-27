@@ -72,20 +72,21 @@ function EventsGallery() {
       infinite: false,
       speed: 500,
       slidesToShow: slideToShow,
-      slidesToScroll: slideToShow,
+      slidesToScroll: 1,
       prevArrow: (
         <CustomPrevArrow onClick={() => sliderRef.current?.slickPrev()} />
-      ), // CustomPrevArrow 클릭 시 이전 슬라이드로 이동
+      ),
       nextArrow: (
         <CustomNextArrow onClick={() => sliderRef.current?.slickNext()} />
-      ), // CustomNextArrow 클릭 시 다음 슬라이드로 이동
+      ),
       accessibility: false,
       afterChange: (current: number) => {
-        setCurrentSlideIndex(current); // 슬라이드 변경 시 현재 슬라이드 인덱스 업데이트
+        setCurrentSlideIndex(current);
       },
     };
   }, [isMobile, isSmallMobile, isTablet]);
-  const dotCount = Math.ceil((data?.length || 0) / settings.slidesToShow);
+
+  const dotCount = Math.max((data?.length || 0) - settings.slidesToShow + 1);
 
   return (
     <div className={'events'}>
@@ -129,11 +130,9 @@ function EventsGallery() {
             key={index}
             sx={{
               backgroundColor:
-                index === Math.floor(currentSlideIndex / settings.slidesToShow)
-                  ? '#404040'
-                  : '#bfbfbf',
+                index === currentSlideIndex ? '#404040' : '#bfbfbf',
             }}
-            onClick={() => handleDotClick(index)} // 도트 클릭 시 해당 슬라이드로 이동
+            onClick={() => handleDotClick(index)}
           />
         ))}
       </div>
